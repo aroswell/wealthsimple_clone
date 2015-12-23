@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.2.0"
 
 # rspec for testing see https://github.com/rspec/rspec for more info
 gem 'rspec'
-
-ruby "2.2.0"
