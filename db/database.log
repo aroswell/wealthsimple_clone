@@ -1,0 +1,10 @@
+D, [2015-12-24T21:28:39.589350 #26327] DEBUG -- :   [1m[36mSQL (0.9ms)[0m  [1mDELETE FROM "users"[0m
+D, [2015-12-24T21:28:40.192169 #26327] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2015-12-24T21:28:40.228259 #26327] DEBUG -- :   [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["first_name", "Armani"], ["last_name", "Kshlerin"], ["email", "emily@lesch.org"], ["created_at", "2015-12-25 02:28:40.203151"], ["updated_at", "2015-12-25 02:28:40.203151"]]
+D, [2015-12-24T21:28:40.229418 #26327] DEBUG -- :   [1m[35m (0.7ms)[0m  COMMIT
+D, [2015-12-24T21:28:40.230162 #26327] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2015-12-24T21:28:40.231581 #26327] DEBUG -- :   [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["first_name", "Maci"], ["last_name", "Hodkiewicz"], ["email", "noble@friesen.biz"], ["created_at", "2015-12-25 02:28:40.230265"], ["updated_at", "2015-12-25 02:28:40.230265"]]
+D, [2015-12-24T21:28:40.232528 #26327] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+D, [2015-12-24T21:28:40.233230 #26327] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2015-12-24T21:28:40.234553 #26327] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["first_name", "Alfred"], ["last_name", "Pouros"], ["email", "gwen@walter.info"], ["created_at", "2015-12-25 02:28:40.233327"], ["updated_at", "2015-12-25 02:28:40.233327"]]
+D, [2015-12-24T21:28:40.235659 #26327] DEBUG -- :   [1m[35m (0.8ms)[0m  COMMIT
