@@ -18,15 +18,18 @@ namespace :db do
     ruby "db/create_db.rb"
   end
 
-  desc "Create and setup database - run create_db, schema and seed"
-  task setup: [:create, :schema, :seed] do
-    puts "Attempting to setup database and seed data..."
-    puts "Setup complete"
+  desc "Drop database"
+  task :dump do
+    puts "Dropping database..."
+    ruby "db/dump_db.rb"
   end
 
+  desc "Create and setup database - run create_db, schema and seed"
+  task setup: [:create, :schema, :seed]
+
+
   desc "Reset database complete"
-  task reset: [:dump, :create, :schema, :seed] do
-  end
+  task reset: [:dump, :create, :schema, :seed]
 
 end
 
