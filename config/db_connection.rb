@@ -1,13 +1,17 @@
-require "active_record"
-# require "yaml"
+# require 'rubygems'
+require 'bundler/setup'
+Bundler.require(:default)
+
 require "logger"
 require_relative "initializers/setup_env.rb"
 
+# require "yaml"
 # yaml_file_path = File.expand_path('../../config/database.yml', __FILE__)
-logfile_path = File.expand_path('../../db/database.log', __FILE__)
-
 # data_base_configuration = YAML::load( File.open(yaml_file_path) )
 # puts data_base_configuration
+# puts $LOAD_PATH
+
+logfile_path = File.expand_path('../../db/database.log', __FILE__)
 
 db_config = {
   adapter: 'postgresql',

@@ -11,4 +11,4 @@ gem 'rake'
 gem 'pg'
 
 # Active record ORM
-gem 'activerecord'
+gem 'activerecord', require: 'active_record'
