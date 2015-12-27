@@ -41,4 +41,14 @@ namespace :app do
     puts "ENV appended"
   end
 
+  desc "Start servers: Sinatra and Thin"
+  task :server do
+    ruby 'bin/server.rb'
+  end
+
 end
+
+
+
+
+
