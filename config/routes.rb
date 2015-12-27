@@ -1,5 +1,8 @@
 # Routes for application
 
+set :views, File.expand_path("../../app/views", __FILE__)
+
 get '/' do
-  'Hello world!'
+  puts params
+  erb :index
 end
