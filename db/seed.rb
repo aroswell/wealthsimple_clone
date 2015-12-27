@@ -1,5 +1,4 @@
-require File.expand_path('../../config/db_connection', __FILE__)
-require "faker"
+# Seed file for populating the database
 
 class User < ActiveRecord::Base
 end

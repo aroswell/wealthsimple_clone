@@ -12,3 +12,5 @@ gem 'pg'
 
 # Active record ORM
 gem 'activerecord', require: 'active_record'
+
+gem 'faker'
