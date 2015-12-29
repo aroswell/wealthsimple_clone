@@ -43,7 +43,7 @@ namespace :app do
 
   desc "Start servers: Sinatra and Thin"
   task :server do
-    `rerun 'ruby bin/server.rb'`
+    sh "rerun bin/server.rb"
   end
 
 end
