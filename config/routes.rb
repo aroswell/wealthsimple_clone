@@ -7,9 +7,9 @@ before do
   puts "Before filter"
   puts "[params] = #{params}"
   puts "app = #{app}"
-  puts "request = #{request}"
+  puts "request = #{request.accept}"
   # puts "env = #{env}"
-  puts "response = #{response}"
+  puts "response = #{response.body}"
   puts "template cache = #{template_cache}"
 end
 
@@ -17,4 +17,8 @@ end
 get '/' do
   @string = Dashboard.index(params)
   erb :index
+end
+
+get '/search' do
+  Dashboard.search(params)
 end
