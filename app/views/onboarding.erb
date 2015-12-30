@@ -1,0 +1,161 @@
+<!-- landing page for users -->
+
+<div class="row">
+
+<!-- Top row  -->
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="fontsize-xxxxl text-center">
+        <span>Hi there,</span>
+        <%# unless current_user.client.nil? || current_user.client.first_name.blank? %>
+          <%#= "#{current_user.client.first_name}." %>
+        <%# end %>
+      </h1>
+      <h3 class="fontsize-l text-center">
+        Please complete the following steps to open an investment account at Justwealth.
+      </h3>
+    </div>
+  </div>
+
+<!-- Middle row with steps -->
+  <div class="row jumbotron">
+    <table class="table-responsive" >
+      <tr>
+        <td>
+          <%# if @risk_completed %>
+            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true" ></span>
+          <%# else %>
+            <!-- <div class="round-number">1</div> -->
+          <%# end %>
+        </td>
+        <td>
+          <%# if @kyc_completed %>
+            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true" ></span>
+          <%# else %>
+            <!-- <div class="round-number">2</div> -->
+          <%# end %>
+        </td>
+        <td>
+          <%# if @photo_upload_completed %>
+            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true" ></span>
+          <%# else %>
+            <!-- <div class="round-number">3</div> -->
+          <%# end %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <h3><span class="bold" style="color: #77c043" >Step 1 </span><br> Complete Investment Questionnaire</h3>
+        </td>
+
+        <td>
+          <h3><span class="bold" style="color: #77c043" >Step 2</span> <br> Complete Your Personal Investment Sheet</h3>
+        </td>
+
+        <td>
+          <h3><span class="bold" style="color: #77c043" >Step 3</span> <br> Upload Photo ID and Sign <br> Investment Application(s) Online</h3>
+        </td>
+
+      </tr>
+
+      <tr>
+        <td>
+            Once we know your investing situation, we can then recommend one of our over 50 portfolios to meet your needs.
+        </td>
+
+        <td>
+            Once we know your investing situation, we can then recommend one of our over 50 portfolios to meet your needs.
+        </td>
+
+        <td>
+            Once we know your investing situation, we can then recommend one of our over 50 portfolios to meet your needs.
+        </td>
+
+      </tr>
+
+      <tr>
+        <td>
+          <%# if @risk_started %>
+            <p><%#= button_to "EDIT", risk_assessment_edit_path, method: 'get', disabled: @kyc_completed, class: "btn btn-primary" %></p>
+          <%# else %>
+            <p><%#= button_to "GET STARTED", risk_assessment_new_path, method: 'get', disabled: @kyc_completed, class: "btn btn-primary" %></p>
+          <%# end %>
+        </td>
+
+        <td>
+          <%# if @kyc_in_progress %>
+            <p><%#= button_to "EDIT", know_your_client_new_path, method: 'get', disabled: @kyc_completed, class: "btn btn-primary" %></p>
+          <%# else %>
+            <p><%#= button_to "GET STARTED", know_your_client_new_path, method: 'get', disabled: @kyc_completed, class: "btn btn-primary" %></p>
+          <%# end %>
+        </td>
+
+        <td>
+          <p><%#= button_to "GET STARTED", sign_form_new_path, method: "get", disabled: @forms_not_completed, class: "btn btn-primary" %></p>
+        </td>
+
+      </tr>
+
+    </table>
+  </div>
+
+
+<!-- Bottom row -->
+  <div class="row">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2> <br> Your Justwealth Team: Investing Just For You <br> </h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <!-- spacer -->
+
+        <!-- Left side column -->
+        <div class="col-md-4 col-md-offset-1">
+
+          <div class="col-md-4">
+            <img src="http://placehold.it/150x150" alt="place holder image" class="img-circle">
+          </div>
+
+          <div class="col-md-8">
+            <p>
+              James Gauthier, MBA, CFA <br>
+              jgauthier@justwealth.com <br>
+              1 866 407 JUST <br>
+            </p>
+          </div>
+       </div>
+
+      <!-- spacer -->
+      <div class="col-md-2"></div>
+
+       <!-- Right side column -->
+        <div class="col-md-4">
+
+          <div class="col-md-4">
+            <img src="http://placehold.it/150x150" alt="place holder image" class="img-circle">
+            <%#= image_tag 'avatar.96.gif', class: 'img-circle' %>
+          </div>
+
+          <div class="col-md-8">
+            <p>
+              Andrew Kirkland, CFP, CIM <br>
+              akirkland@justwealth.com <br>
+              1 866 407 JUST <br>
+            </p>
+          </div>
+       </div>
+
+       <!-- spacer -->
+        <div class="col-md-1"></div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

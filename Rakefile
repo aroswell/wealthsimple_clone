@@ -32,7 +32,7 @@ namespace :db do
     puts "DROPPED!"
   end
 
-  desc "Create and setup database - run create_db, schema and seed"
+  desc "Create and setup database"
   task setup: [:create, :schema, :seed]
 
 
