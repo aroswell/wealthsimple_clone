@@ -9,6 +9,7 @@ current_user = false
 configure do
   set :views, File.expand_path("../../app/views", __FILE__)
   set :public_folder, "./app/assets/styles"
+  enable :sessions
 end
 
 before do
@@ -16,6 +17,7 @@ before do
   # puts "[params] = #{params}"
   # puts "app = #{app}"
   puts "Path info = #{request.path_info}"
+  puts session
   # puts "env = #{env}"
   # puts "response = #{response.body}"
   # puts "template cache = #{template_cache}"
