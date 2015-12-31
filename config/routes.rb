@@ -64,6 +64,56 @@ post '/sign-in' do
 end
 
 
+# FormController routes for KYC form
+get '/application/new' do
+  # call the new method in form_controller
+  erb :"forms/kyc/new"
+end
+
+get '/application/edit' do
+  # call the edit method in form_controller
+  erb :"forms/kyc/new"
+end
+
+post '/application/create' do
+  # call the create method in form_controller
+  "Need to redirect somewhere"
+end
+
+post '/application/update' do
+  # call the update method in form_controller
+  "Need to redirect somewhere"
+end
+
+# FormController routes for risk form
+get '/risk_assessment/new' do
+  # call the new method in form_controller
+  erb :"forms/risk_assessment/new"
+end
+
+get '/risk_assessment/edit' do
+  # call the edit method in form_controller
+  erb :"forms/risk_assessment/new"
+end
+
+post '/risk_assessment/create' do
+  # call the create method in form_controller
+  "Need to redirect somewhere"
+end
+
+post '/risk_assessment/update' do
+  # call the update method in form_controller
+  "Need to redirect somewhere"
+end
+
+# FormController routes for form sign off
+get '/sign-forms/new' do
+  # call the new method in form_controller
+  erb :"forms/sign_forms/new"
+end
+
+
+
 # helper methods: method will be available to routing method blocks and to the views
 helpers do
   def current_user
