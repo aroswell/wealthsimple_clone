@@ -1,10 +1,9 @@
 # Routes for application
+require File.expand_path("../../app/controllers/application_controller", __FILE__)
 require File.expand_path("../../app/controllers/dashboard_controller", __FILE__)
 require File.expand_path("../../app/controllers/users/registration_controller", __FILE__)
 require File.expand_path("../../app/controllers/users/sessions_controller", __FILE__)
 
-
-current_user = false
 
 configure do
   set :views, File.expand_path("../../app/views", __FILE__)
@@ -17,7 +16,12 @@ before do
   # puts "[params] = #{params}"
   # puts "app = #{app}"
   puts "Path info = #{request.path_info}"
-  puts session
+  print "#{session.keys}" + "\n"
+  puts session[:session_id]
+  puts session[:csrf]
+  puts session[:tracking]
+  puts "\n"
+
   # puts "env = #{env}"
   # puts "response = #{response.body}"
   # puts "template cache = #{template_cache}"
@@ -58,6 +62,18 @@ end
 post '/sign-in' do
   User::SessionsController.create(params)
 end
+
+
+# helper methods: method will be available to routing method blocks and to the views
+helpers do
+  def current_user
+    App.current_user(session)
+  end
+end
+
+
+
+
 
 
 
