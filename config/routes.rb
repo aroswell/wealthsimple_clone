@@ -29,13 +29,13 @@ end
 
 # DashboardController routes
 get '/' do
-  erb :index
+  erb :"dashboard/index"
 end
 
 get '/onboarding' do
   # If visitor is not signed in, then redirect to sign-in page
   if current_user
-    erb :onboarding
+    erb :"dashboard/onboarding"
   else
     redirect to '/sign-in'
   end
@@ -48,7 +48,7 @@ end
 
 # UserController routes
 get '/signup' do
-  erb :new_signup
+  erb :"registrations/new_signup"
 end
 
 post '/signup' do
@@ -56,7 +56,7 @@ post '/signup' do
 end
 
 get '/sign-in' do
-  erb :signin
+  erb :"sessions/signin"
 end
 
 post '/sign-in' do
