@@ -3,6 +3,7 @@ require File.expand_path("../../app/controllers/application_controller", __FILE_
 require File.expand_path("../../app/controllers/dashboard_controller", __FILE__)
 require File.expand_path("../../app/controllers/users/registration_controller", __FILE__)
 require File.expand_path("../../app/controllers/users/sessions_controller", __FILE__)
+require File.expand_path("../../app/controllers/forms_controller", __FILE__)
 
 
 configure do
@@ -67,51 +68,75 @@ end
 # FormController routes for KYC form
 get '/application/new' do
   # call the new method in form_controller
+  Forms::KycController.new
+
   erb :"forms/kyc/new"
 end
 
 get '/application/edit' do
   # call the edit method in form_controller
+  Forms::KycController.edit
+
   erb :"forms/kyc/new"
 end
 
 post '/application/create' do
   # call the create method in form_controller
+  Forms::KycController.create
+
   "Need to redirect somewhere"
 end
 
 post '/application/update' do
   # call the update method in form_controller
+  Forms::KycController.update
+
   "Need to redirect somewhere"
 end
 
 # FormController routes for risk form
 get '/risk_assessment/new' do
   # call the new method in form_controller
+  Forms::RiskAssessmentController.new
+
   erb :"forms/risk_assessment/new"
 end
 
 get '/risk_assessment/edit' do
   # call the edit method in form_controller
+  Forms::RiskAssessmentController.edit
+
   erb :"forms/risk_assessment/new"
 end
 
 post '/risk_assessment/create' do
   # call the create method in form_controller
+  Forms::RiskAssessmentController.create
+
   "Need to redirect somewhere"
 end
 
 post '/risk_assessment/update' do
   # call the update method in form_controller
+  Forms::RiskAssessmentController.update
+
   "Need to redirect somewhere"
 end
 
 # FormController routes for form sign off
 get '/sign-forms/new' do
   # call the new method in form_controller
+  Forms::SignFormsController.new
+
   erb :"forms/sign_forms/new"
 end
 
+post '/sign-forms/create' do
+  # call the new method in form_controller
+  Forms::SignFormsController.create
+
+  "Need to redirect somewhere"
+end
 
 
 # helper methods: method will be available to routing method blocks and to the views
