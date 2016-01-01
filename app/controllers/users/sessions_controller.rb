@@ -1,4 +1,4 @@
-module User
+module UserController
 
   class SessionsController
     def self.create(params)

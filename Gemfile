@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 ruby "2.2.0"
 
+#  rb-fsevent: The FSEvents (File system events) API in Mac OS X allows applications to register for notifications of
+# changes to a given directory tree. Whenever the filesystem is changed,
+# the kernel passes notifications via the special device file /dev/fsevents to a userspace process called fseventsd
+# gem 'rb-fsevent'
+
 # rspec for testing see https://github.com/rspec/rspec for more info
 gem 'rspec'
 
@@ -14,3 +19,6 @@ gem 'pg'
 gem 'activerecord', require: 'active_record'
 
 gem 'faker'
+
+# Thin web server
+# gem 'thin'

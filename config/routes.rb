@@ -1,4 +1,5 @@
-# Routes for application
+# Routes file for application
+
 require File.expand_path("../../app/controllers/application_controller", __FILE__)
 require File.expand_path("../../app/controllers/dashboard_controller", __FILE__)
 require File.expand_path("../../app/controllers/users/registration_controller", __FILE__)
@@ -6,11 +7,16 @@ require File.expand_path("../../app/controllers/users/sessions_controller", __FI
 require File.expand_path("../../app/controllers/forms_controller", __FILE__)
 
 
+
 configure do
+  # set :run, false
+  set :server, %w[thin mongrel webrick] # this is the default
   set :views, File.expand_path("../../app/views", __FILE__)
   set :public_folder, "./app/assets/styles"
   enable :sessions
+  set :session_secret, ENV["SECRET_TOKEN"]
 end
+
 
 before do
   # puts "Before filter"
@@ -27,6 +33,7 @@ before do
   # puts "response = #{response.body}"
   # puts "template cache = #{template_cache}"
 end
+
 
 # DashboardController routes
 get '/' do
@@ -49,11 +56,12 @@ end
 
 # UserController routes
 get '/signup' do
+  UserController::RegistrationController.create(params)
   erb :"registrations/new_signup"
 end
 
 post '/signup' do
-  User::RegistrationController.create(params)
+  UserController::RegistrationController.create(params)
 end
 
 get '/sign-in' do
@@ -61,7 +69,7 @@ get '/sign-in' do
 end
 
 post '/sign-in' do
-  User::SessionsController.create(params)
+  UserController::SessionsController.create(params)
 end
 
 
@@ -145,7 +153,6 @@ helpers do
     App.current_user(session)
   end
 end
-
 
 
 
