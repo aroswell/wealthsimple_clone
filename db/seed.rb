@@ -1,7 +1,6 @@
 # Seed file for populating the database
+require File.expand_path( "../../app/models/user", __FILE__ )
 
-class User < ActiveRecord::Base
-end
 
 User.delete_all
 
@@ -11,6 +10,7 @@ User.delete_all
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
+    password: 'password'
     )
 end
 

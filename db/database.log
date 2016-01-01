@@ -1,0 +1,10 @@
+D, [2016-01-01T13:33:49.854930 #11512] DEBUG -- :   [1m[35mSQL (0.9ms)[0m  DELETE FROM "users"
+D, [2016-01-01T13:33:50.287751 #11512] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+D, [2016-01-01T13:33:50.296152 #11512] DEBUG -- :   [1m[35mSQL (0.8ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Durward"], ["last_name", "Mitchell"], ["email", "elisa@konopelski.info"], ["password_digest", "$2a$10$YZQNfeyubIwqp2wiyDq5suMC4kBm9XlbYtiGraw5CuDL4W/sUt4Ky"], ["created_at", "2016-01-01 18:33:50.290347"], ["updated_at", "2016-01-01 18:33:50.290347"]]
+D, [2016-01-01T13:33:50.297587 #11512] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+D, [2016-01-01T13:33:50.372944 #11512] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-01T13:33:50.374338 #11512] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Leila"], ["last_name", "Feil"], ["email", "carmel@kuhn.com"], ["password_digest", "$2a$10$OPVZ2lYLtofUMf9Az/3BsOi6vK/J6EFq9ub.IhlCAsx7f/O9hNUCC"], ["created_at", "2016-01-01 18:33:50.373178"], ["updated_at", "2016-01-01 18:33:50.373178"]]
+D, [2016-01-01T13:33:50.375747 #11512] DEBUG -- :   [1m[35m (1.0ms)[0m  COMMIT
+D, [2016-01-01T13:33:50.452357 #11512] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+D, [2016-01-01T13:33:50.453871 #11512] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Larue"], ["last_name", "Hodkiewicz"], ["email", "constantin@corwin.name"], ["password_digest", "$2a$10$aPFwpnybYq7C8V/Gx/DRjuHRs8OOOiU1Vmg1jZWi/iQg0DOMmucUe"], ["created_at", "2016-01-01 18:33:50.452618"], ["updated_at", "2016-01-01 18:33:50.452618"]]
+D, [2016-01-01T13:33:50.454805 #11512] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
