@@ -20,7 +20,7 @@ end
 
 before do
   # puts "Before filter"
-  # puts "[params] = #{params}"
+  puts "[params] = #{params}"
   # puts "app = #{app}"
   puts "Path info = #{request.path_info}"
   print "#{session.keys}" + "\n"
@@ -56,12 +56,13 @@ end
 
 # UserController routes
 get '/signup' do
-  UserController::RegistrationController.create(params)
   erb :"registrations/new_signup"
 end
 
 post '/signup' do
-  UserController::RegistrationController.create(params)
+  user = UserController::RegistrationController.create(params)
+  session[:user_id] = user.id unless user.nil?
+  redirect to('/onboarding')
 end
 
 get '/sign-in' do
