@@ -80,7 +80,9 @@ end
   end
 
   post '/sign-in' do
-    UserController::SessionsController.create(params)
+    user = UserController::SessionsController.create(params)
+    session[:user_id] = user.id unless user.nil?
+    redirect to('/')
   end
 
   get '/logout' do
