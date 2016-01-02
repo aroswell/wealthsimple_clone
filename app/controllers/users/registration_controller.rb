@@ -23,10 +23,12 @@ module UserController
     end
 
     def self.update(params)
+      # User can change email and password
       "Testing update"
     end
 
     def self.delete(params)
+      # user or admin can destroy their account
       "User: #{params[:first_name]} #{params[:last_name]}, will be deleted."
     end
 

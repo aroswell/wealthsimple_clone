@@ -1,3 +1,6 @@
+require File.expand_path("../../../../lib/database_module", __FILE__ )
+require File.expand_path("../../../models/user", __FILE__ )
+
 module UserController
 
   class SessionsController
@@ -11,8 +14,9 @@ module UserController
       "Testing update"
     end
 
-    def self.delete(params)
-      "Session destroyed."
+    def self.delete(session)
+      session[:user_id] = nil
+      return session
     end
 
   end

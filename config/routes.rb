@@ -36,42 +36,58 @@ end
 
 
 # DashboardController routes
-get '/' do
-  erb :"dashboard/index"
-end
-
-get '/onboarding' do
-  # If visitor is not signed in, then redirect to sign-in page
-  if current_user
-    erb :"dashboard/onboarding"
-  else
-    redirect to '/sign-in'
+  get '/' do
+    if current_user && current_user.approved?
+      erb :"dashboard/index"
+    elsif current_user
+      redirect to('/onboarding')
+    else
+      redirect to '/sign-in'
+    end
   end
-end
 
-get '/search' do
-  Dashboard.search(params)
-end
+  get '/onboarding' do
+    # If visitor is not signed in, then redirect to sign-in page
+    if current_user
+      erb :"dashboard/onboarding"
+    else
+      redirect to '/'
+    end
+  end
+
+  get '/search' do
+    Dashboard.search(params)
+  end
 
 
 # UserController routes
-get '/signup' do
-  erb :"registrations/new_signup"
-end
+  get '/signup' do
+    erb :"registrations/new_signup"
+  end
 
-post '/signup' do
-  user = UserController::RegistrationController.create(params)
-  session[:user_id] = user.id unless user.nil?
-  redirect to('/onboarding')
-end
+  post '/signup' do
+    user = UserController::RegistrationController.create(params)
+    session[:user_id] = user.id unless user.nil?
+    redirect to('/')
+  end
 
-get '/sign-in' do
-  erb :"sessions/signin"
-end
+  get '/sign-in' do
+    unless current_user
+      erb :"sessions/signin"
+    else
+      redirect to '/'
+    end
+  end
 
-post '/sign-in' do
-  UserController::SessionsController.create(params)
-end
+  post '/sign-in' do
+    UserController::SessionsController.create(params)
+  end
+
+  get '/logout' do
+    # UserController::SessionsController.delete(session)
+    session[:user_id] = nil
+    redirect to('/')
+  end
 
 
 # FormController routes for KYC form
@@ -151,7 +167,7 @@ end
 # helper methods: method will be available to routing method blocks and to the views
 helpers do
   def current_user
-    App.current_user(session)
+    AppController.current_user(session)
   end
 end
 
