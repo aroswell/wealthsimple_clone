@@ -23,10 +23,7 @@ before do
   puts "[params] = #{params}"
   # puts "app = #{app}"
   puts "Path info = #{request.path_info}"
-  print "#{session.keys}" + "\n"
-  puts session[:session_id]
-  puts session[:csrf]
-  puts session[:tracking]
+
   puts "\n"
 
   # puts "env = #{env}"
@@ -36,60 +33,63 @@ end
 
 
 # DashboardController routes
-  get '/' do
-    if current_user && current_user.approved?
-      erb :"dashboard/index"
-    elsif current_user
-      redirect to('/onboarding')
-    else
-      redirect to '/sign-in'
+    get '/' do
+      if current_user && current_user.approved?
+        erb :"dashboard/index"
+      elsif current_user
+        redirect to('/onboarding')
+      else
+        redirect to '/sign-in'
+      end
     end
-  end
 
-  get '/onboarding' do
-    # If visitor is not signed in, then redirect to sign-in page
-    if current_user
-      erb :"dashboard/onboarding"
-    else
-      redirect to '/'
+    get '/onboarding' do
+      # If visitor is not signed in, then redirect to sign-in page
+      if current_user
+        erb :"dashboard/onboarding"
+      else
+        redirect to '/'
+      end
     end
-  end
 
-  get '/search' do
-    Dashboard.search(params)
-  end
+    get '/search' do
+      Dashboard.search(params)
+    end
 
 
 # UserController routes
-  get '/signup' do
-    erb :"registrations/new_signup"
-  end
-
-  post '/signup' do
-    user = UserController::RegistrationController.create(params)
-    session[:user_id] = user.id unless user.nil?
-    redirect to('/')
-  end
-
-  get '/sign-in' do
-    unless current_user
-      erb :"sessions/signin"
-    else
-      redirect to '/'
+    get '/signup' do
+      unless current_user
+        erb :"registrations/new_signup"
+      else
+        redirect to '/'
+      end
     end
-  end
 
-  post '/sign-in' do
-    user = UserController::SessionsController.create(params)
-    session[:user_id] = user.id unless user.nil?
-    redirect to('/')
-  end
+    post '/signup' do
+      user = UserController::RegistrationController.create(params)
+      session[:user_id] = user.id unless user.nil?
+      redirect to('/')
+    end
 
-  get '/logout' do
-    # UserController::SessionsController.delete(session)
-    session[:user_id] = nil
-    redirect to('/')
-  end
+    get '/sign-in' do
+      unless current_user
+        erb :"sessions/signin"
+      else
+        redirect to '/'
+      end
+    end
+
+    post '/sign-in' do
+      user = UserController::SessionsController.create(params)
+      session[:user_id] = user.id unless user.nil?
+      redirect to('/')
+    end
+
+    get '/logout' do
+      delete_current_session
+      redirect to('/')
+    end
 
 
 # FormController routes for KYC form
@@ -121,6 +121,8 @@ post '/application/update' do
   "Need to redirect somewhere"
 end
 
+
+
 # FormController routes for risk form
 get '/risk_assessment/new' do
   # call the new method in form_controller
@@ -150,6 +152,8 @@ post '/risk_assessment/update' do
   "Need to redirect somewhere"
 end
 
+
+
 # FormController routes for form sign off
 get '/sign-forms/new' do
   # call the new method in form_controller
@@ -169,8 +173,13 @@ end
 # helper methods: method will be available to routing method blocks and to the views
 helpers do
   def current_user
-    AppController.current_user(session)
+    UserController::SessionsController.current_user(session)
   end
+
+  def delete_current_session
+    UserController::SessionsController.delete(session)
+  end
+
 end
 
 

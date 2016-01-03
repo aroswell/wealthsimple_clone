@@ -8,11 +8,12 @@ module UserController
       # create session and save data
       user_params = clean_user_params(params)
       user = User.find_by( email: user_params["email"])
+      # TODO: Need to be able to handle database timeouts
 
       if user && (user.password == user_params[:password])
         return user
       else
-        puts "You've entered an incorrent email and password combination."
+        puts "You've entered an incorrect email and password combination."
       end
 
       # "Welcome #{params[:email]}. Password is #{params[:password]}"
@@ -24,8 +25,12 @@ module UserController
 
     def self.delete(session)
       session[:user_id] = nil
-      return session
     end
+
+    def self.current_user(session)
+      current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
+
 
 
     private

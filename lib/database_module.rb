@@ -25,7 +25,9 @@ module Db
 
   def self.connect
     logfile_path = File.expand_path('../../db/database.log', __FILE__)
-    ActiveRecord::Base.establish_connection(@db_config)
+    conn = ActiveRecord::Base.establish_connection(@db_config)
+    conn.checkout_timeout = 10
+
     logger = Logger.new(File.open(logfile_path, "w"))
     logger.level = Logger::DEBUG
     ActiveRecord::Base.logger = logger
