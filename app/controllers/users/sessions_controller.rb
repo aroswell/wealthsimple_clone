@@ -4,19 +4,9 @@ require File.expand_path("../../../models/user", __FILE__ )
 module UserController
 
   class SessionsController
-    def self.create(params)
-      # create session and save data
-      user_params = clean_user_params(params)
-      user = User.find_by( email: user_params["email"])
-      # TODO: Need to be able to handle database timeouts
 
-      if user && (user.password == user_params[:password])
-        return user
-      else
-        puts "You've entered an incorrect email and password combination."
-      end
-
-      # "Welcome #{params[:email]}. Password is #{params[:password]}"
+    def self.create(session, user)
+      session[:user_id] = user.id unless user.nil?
     end
 
     def self.update(params)
@@ -28,6 +18,8 @@ module UserController
     end
 
     def self.current_user(session)
+      Db.connect
+
       current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 

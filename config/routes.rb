@@ -22,10 +22,7 @@ before do
   # puts "Before filter"
   puts "[params] = #{params}"
   # puts "app = #{app}"
-  puts "Path info = #{request.path_info}"
-
-  puts "\n"
-
+  puts "Path info = #{request.path_info}\n"
   # puts "env = #{env}"
   # puts "response = #{response.body}"
   # puts "template cache = #{template_cache}"
@@ -81,13 +78,13 @@ end
     end
 
     post '/sign-in' do
-      user = UserController::SessionsController.create(params)
-      session[:user_id] = user.id unless user.nil?
+      user = UserController::RegistrationController.fetch(params)
+      create_user_session(user)
       redirect to('/')
     end
 
     get '/logout' do
-      delete_current_session
+      delete_user_session
       redirect to('/')
     end
 
@@ -176,7 +173,11 @@ helpers do
     UserController::SessionsController.current_user(session)
   end
 
-  def delete_current_session
+  def create_user_session(user)
+    UserController::SessionsController.create(session, user)
+  end
+
+  def delete_user_session
     UserController::SessionsController.delete(session)
   end
 

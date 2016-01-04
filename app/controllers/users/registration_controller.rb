@@ -3,23 +3,39 @@ require File.expand_path("../../../models/user", __FILE__ )
 
 module UserController
   class RegistrationController
-    Db.connect
-
 
     def self.create(params)
-      puts params.class
+      Db.connect
+
       user_params = clean_user_params(params)
       user = User.new(user_params)
-      puts "Before save: user id is #{user.id}"
       if user.save
         # some kind of flash message goes here
         puts "New user saved successfully"
-        puts "After save: user id is #{user.id}"
         return user
       else
         # error message raised here
         puts "Oops. Something went wrong while trying to save new user."
       end
+    end
+
+    def self.fetch(params)
+      Db.connect
+
+      user_params = clean_user_params(params)
+      user = User.find_by( email: user_params["email"])
+
+      if user && (user.password == user_params[:password])
+        return user
+      else
+        puts "You've entered an incorrect email and password combination."
+        return nil
+      end
+    end
+
+    def self.edit(params)
+      # User can change email and password
+      "Testing edit"
     end
 
     def self.update(params)
@@ -47,8 +63,6 @@ module UserController
 
         clean_params[model]
       end
-
-
 
   end
 
