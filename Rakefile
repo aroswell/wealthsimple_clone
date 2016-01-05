@@ -4,23 +4,27 @@ namespace :db do
   task :schema do
     puts "Running schema ..."
     load 'lib/database_module.rb'
-    Db.connect
+    pool = Database::Pool.new
+    pool.connect
     load 'db/schema.rb'
+    pool.release
   end
 
   desc "Run seed file to populate database"
   task :seed do
     puts "Attempting to seed data..."
     load 'lib/database_module.rb'
-    Db.connect
+    pool = Database::Pool.new
+    pool.connect
     load 'db/seed.rb'
+    pool.release
   end
 
   desc "Run database creation"
   task :create do
     puts "Creating database..."
     load 'lib/database_module.rb'
-    Db.create
+    Database::Setup.create
     puts "CREATED!"
   end
 
@@ -28,7 +32,7 @@ namespace :db do
   task :dump do
     puts "Dropping database..."
     load 'lib/database_module.rb'
-    Db.dump
+    Database::Setup.dump
     puts "DROPPED!"
   end
 

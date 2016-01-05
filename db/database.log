@@ -1,6 +1,10 @@
-D, [2016-01-05T00:06:23.976096 #1470] DEBUG -- :   [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 10]]
--01-05T00:06:23.982628 #1470] DEBUG -- :   [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 10]]
-D, [2016-01-05T00:06:23.983125 #1470] DEBUG -- :   [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 10]]
-", 10]]
-_at", "2016-01-05 05:07:44.709594"], ["updated_at", "2016-01-05 05:07:44.709594"]]
-D, [2016-01-05T00:07:44.740511 #1470] DEBUG -- :   [1m[35m (1.1ms)[0m  COMMIT
+D, [2016-01-05T13:19:47.648946 #5647] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  DELETE FROM "users"
+D, [2016-01-05T13:19:48.077506 #5647] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+D, [2016-01-05T13:19:48.085023 #5647] DEBUG -- :   [1m[35mSQL (0.8ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Davion"], ["last_name", "Hagenes"], ["email", "roie.schaefer@hirthemarvin.net"], ["password_digest", "$2a$10$0Dl9109GS.X9.GnE4CM3Ne/ExE2vbgBqof4IkL2X.Wv3gk2hYHbRW"], ["created_at", "2016-01-05 18:19:48.079724"], ["updated_at", "2016-01-05 18:19:48.079724"]]
+D, [2016-01-05T13:19:48.086402 #5647] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+D, [2016-01-05T13:19:48.159055 #5647] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-05T13:19:48.160466 #5647] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Rubye"], ["last_name", "Wehner"], ["email", "ferne.kaulke@oberbrunner.net"], ["password_digest", "$2a$10$jOp/84OfzUOkhy3U.eBOLO98beGkpKiaGUgcb.GLsMZhleJ1r1BwC"], ["created_at", "2016-01-05 18:19:48.159294"], ["updated_at", "2016-01-05 18:19:48.159294"]]
+D, [2016-01-05T13:19:48.161904 #5647] DEBUG -- :   [1m[35m (1.1ms)[0m  COMMIT
+D, [2016-01-05T13:19:48.234250 #5647] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+D, [2016-01-05T13:19:48.235624 #5647] DEBUG -- :   [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Zora"], ["last_name", "Fritsch"], ["email", "jasper.thiel@hoeger.info"], ["password_digest", "$2a$10$4QFmjOnwDzkWbo4AcTg0QOjvVHI/1XsjQ9etvyyXYrMY9Fl/SMreC"], ["created_at", "2016-01-05 18:19:48.234476"], ["updated_at", "2016-01-05 18:19:48.234476"]]
+D, [2016-01-05T13:19:48.236905 #5647] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
