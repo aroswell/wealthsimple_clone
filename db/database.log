@@ -1,0 +1,6 @@
+D, [2016-01-05T00:06:23.976096 #1470] DEBUG -- :   [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 10]]
+-01-05T00:06:23.982628 #1470] DEBUG -- :   [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 10]]
+D, [2016-01-05T00:06:23.983125 #1470] DEBUG -- :   [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 10]]
+", 10]]
+_at", "2016-01-05 05:07:44.709594"], ["updated_at", "2016-01-05 05:07:44.709594"]]
+D, [2016-01-05T00:07:44.740511 #1470] DEBUG -- :   [1m[35m (1.1ms)[0m  COMMIT

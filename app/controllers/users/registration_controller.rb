@@ -1,11 +1,11 @@
-require File.expand_path("../../../../lib/database_module", __FILE__ )
+# require File.expand_path("../../../../lib/database_module", __FILE__ )
 require File.expand_path("../../../models/user", __FILE__ )
 
 module UserController
   class RegistrationController
 
     def self.create(params)
-      Db.connect
+      # Db.connect
 
       user_params = clean_user_params(params)
       user = User.new(user_params)
@@ -20,9 +20,9 @@ module UserController
     end
 
     def self.fetch(params)
-      Db.connect
+      # Db.connect
 
-      user_params = clean_user_params(params)
+      user_params = clean_user_params_for_signin(params)
       user = User.find_by( email: user_params["email"])
 
       if user && (user.password == user_params[:password])
@@ -51,6 +51,10 @@ module UserController
     private
       def self.clean_user_params(dirty_params)
         strong_params( dirty_params, "user", ["first_name", "last_name", "email", "password"] )
+      end
+
+      def self.clean_user_params_for_signin(dirty_params)
+        strong_params( dirty_params, "user", [ "email", "password" ] )
       end
 
       def self.strong_params( dirty_params, model, whitelist )

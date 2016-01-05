@@ -1,4 +1,4 @@
-require File.expand_path("../../../../lib/database_module", __FILE__ )
+# require File.expand_path("../../../../lib/database_module", __FILE__ )
 require File.expand_path("../../../models/user", __FILE__ )
 
 module UserController
@@ -18,28 +18,11 @@ module UserController
     end
 
     def self.current_user(session)
-      Db.connect
-
+      # Db.connect
       current_user ||= User.find(session[:user_id]) if session[:user_id]
+      # Db.release
+      return current_user
     end
-
-
-
-    private
-      def self.clean_user_params(dirty_params)
-        strong_params( dirty_params, "user", [ "email", "password" ] )
-      end
-
-      def self.strong_params( dirty_params, model, whitelist )
-        clean_params = {}
-        clean_params[model] = {}
-
-        whitelist.each do |key|
-          clean_params[model][key] = dirty_params[model][key] if dirty_params[model].has_key?(key)
-        end
-
-        clean_params[model]
-      end
 
   end
 

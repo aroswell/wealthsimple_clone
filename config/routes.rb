@@ -1,5 +1,6 @@
 # Routes file for application
 
+require File.expand_path("../../lib/database_module", __FILE__ )
 require File.expand_path("../../app/controllers/application_controller", __FILE__)
 require File.expand_path("../../app/controllers/dashboard_controller", __FILE__)
 require File.expand_path("../../app/controllers/users/registration_controller", __FILE__)
@@ -19,6 +20,7 @@ end
 
 
 before do
+  Db.connect
   # puts "Before filter"
   puts "[params] = #{params}"
   # puts "app = #{app}"
@@ -28,6 +30,9 @@ before do
   # puts "template cache = #{template_cache}"
 end
 
+after do
+  Db.release
+end
 
 # DashboardController routes
     get '/' do

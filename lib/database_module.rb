@@ -1,6 +1,7 @@
 require File.expand_path( '../../config/boot', __FILE__)
 
 module Db
+  puts "Database module loaded"
 
   @db_config = {
     adapter: 'postgresql',
@@ -10,7 +11,14 @@ module Db
     host: 'localhost',
     encoding: 'utf8',
     pool: 5
+    # timeout: 7000
   }
+
+  @logfile_path = File.expand_path('../../db/database.log', __FILE__)
+
+  @the_connection_pool = ActiveRecord::Base.establish_connection(@db_config)
+  puts @the_connection_pool.class
+
 
   def self.create
     conn = PG.connect(dbname: 'postgres')
@@ -24,17 +32,29 @@ module Db
   end
 
   def self.connect
-    logfile_path = File.expand_path('../../db/database.log', __FILE__)
-    the_connection = ActiveRecord::Base.establish_connection(@db_config)
-    the_connection.checkout_timeout = 10
+    # the_connection = ActiveRecord::Base.establish_connection(@db_config)
+    puts "Are there any connections to the database: #{@the_connection_pool.connected?}"
+    puts "How many connections are there: #{@the_connection_pool.connections.length}"
 
-    logger = Logger.new(File.open(logfile_path, "w"))
+    @the_connection = @the_connection_pool.connection
+    puts "Here's the connection object: #{@the_connection}"
+
+    logger = Logger.new(File.open(@logfile_path, "w"))
     logger.level = Logger::DEBUG
     ActiveRecord::Base.logger = logger
 
-    return the_connection
+    return @the_connection
   end
 
+  def self.release
+    @the_connection_pool.checkin(@the_connection)
+    puts "How many connections are there after release: #{@the_connection_pool.connections.length}"
+
+  end
+
+  def self.disconnect_all
+    @the_connection_pool.disconnect! if @the_connection_pool
+  end
 
 
   # module_function :connect
