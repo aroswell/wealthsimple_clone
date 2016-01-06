@@ -67,8 +67,6 @@ module Database
     end
   end
 
-  # module_function :connect
-
 end
 
 

@@ -1,6 +1,7 @@
 # Routes file for application
 
 require File.expand_path("../../lib/database_module", __FILE__ )
+require File.expand_path("../../app/models/user", __FILE__)
 require File.expand_path("../../app/controllers/application_controller", __FILE__)
 require File.expand_path("../../app/controllers/dashboard_controller", __FILE__)
 require File.expand_path("../../app/controllers/users/registration_controller", __FILE__)
