@@ -53,20 +53,19 @@ namespace :app do
     puts "ENV appended"
   end
 
-  desc "Sets environment variable"
-  task :set_env do
-    ENV["APP_ENVIRONMENT"] = "development"
-  end
-
-  desc "Start servers: Sinatra and Thin"
-  task :server do
+  desc "Run application"
+  task :run, [:env] do |t, args|
+    args.with_defaults( env: "development")
+    ENV["APP_ENVIRONMENT"] = "#{args[:env]}"
     sh "rerun bin/server.rb"
   end
 
-  desc "Run application"
-  task :run => [:set_env, :server]
-
 end
+
+
+
+
+
 
 
 
