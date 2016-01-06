@@ -7,7 +7,9 @@ require File.expand_path("../../app/controllers/users/registration_controller", 
 require File.expand_path("../../app/controllers/users/sessions_controller", __FILE__)
 require File.expand_path("../../app/controllers/forms_controller", __FILE__)
 
-
+def pool
+  Database::Pool.instance
+end
 
 configure do
   # set :run, false
@@ -20,8 +22,10 @@ end
 
 
 before do
-  Db.connect
-  # puts "Before filter"
+  puts "Before filter"
+  pool.connect
+
+  # @pool.connect
   puts "[params] = #{params}"
   # puts "app = #{app}"
   puts "Path info = #{request.path_info}\n"
@@ -31,7 +35,8 @@ before do
 end
 
 after do
-  Db.release
+  puts "After filter"
+  pool.release
 end
 
 # DashboardController routes

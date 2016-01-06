@@ -18,10 +18,7 @@ module UserController
     end
 
     def self.current_user(session)
-      # Db.connect
       current_user ||= User.find(session[:user_id]) if session[:user_id]
-      # Db.release
-      return current_user
     end
 
   end

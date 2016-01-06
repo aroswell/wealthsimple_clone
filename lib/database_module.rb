@@ -1,4 +1,5 @@
 require File.expand_path( '../../config/boot', __FILE__)
+require 'singleton'
 
 module Database
 
@@ -32,23 +33,22 @@ module Database
 
 
   class Pool
-    attr_reader :db_config, :logfile_path
+    include Singleton
+    attr_reader :db_config, :logfile_path, :the_connection_pool
 
     def initialize(config_hash = Database.default_config, logfile_path = File.expand_path('../../db/database.log', __FILE__))
       @db_config = config_hash
       @logfile_path = logfile_path
       @the_connection_pool = ActiveRecord::Base.establish_connection(@db_config)
-
-      puts @the_connection_pool.class
     end
 
     def connect
       # the_connection = ActiveRecord::Base.establish_connection(@db_config)
       puts "Are there any connections to the database: #{@the_connection_pool.connected?}"
-      puts "How many connections are there: #{@the_connection_pool.connections.length}"
 
       @the_connection = @the_connection_pool.connection
       puts "Here's the connection object: #{@the_connection}"
+      puts "How many connections are there now that we have a connection: #{@the_connection_pool.connections.length}"
 
       logger = Logger.new(File.open(@logfile_path, "w"))
       logger.level = Logger::DEBUG

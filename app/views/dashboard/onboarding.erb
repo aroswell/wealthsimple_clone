@@ -7,8 +7,8 @@
     <div class="col-md-12">
       <h1 class="fontsize-xxxxl text-center">
         <span>Hi there,</span>
-        <%# unless current_user.client.nil? || current_user.client.first_name.blank? %>
-          <%#= "#{current_user.client.first_name}." %>
+        <%# unless current_user.nil? || current_user.first_name.blank? %>
+          <%= current_user.first_name if current_user %>
         <%# end %>
       </h1>
       <h3 class="fontsize-l text-center">
