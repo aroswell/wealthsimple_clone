@@ -17,12 +17,18 @@ namespace :db do
   end
 
   desc "Run seed file to populate database"
-  task seed: [:db_module] do
-    puts "Attempting to seed data..."
-    pool = Database::Pool.instance
-    pool.connect
-    load 'db/seed.rb'
-    pool.release
+  task :seed, [:env] => [:db_module] do |t, args|
+    args.with_defaults( env: "development")
+    if args[:env] == "development"
+      puts "Attempting to seed data..."
+      pool = Database::Pool.instance
+      pool.connect
+      load 'db/seed.rb'
+      pool.release
+    elsif args[:env] == "test"
+      puts "Not seed data availabe for test database"
+    end
+
   end
 
   desc "Run database creation"
@@ -40,10 +46,10 @@ namespace :db do
   end
 
   desc "Create and setup database"
-  task setup: [:create, :schema, :seed]
+  task :setup, [:env] => [:create, :schema, :seed]
 
   desc "Reset database complete"
-  task reset: [:db_module, :dump, :create, :schema, :seed]
+  task :reset, [:env] => [:dump, :create, :schema, :seed]
 
 end
 
