@@ -9,7 +9,7 @@ require File.expand_path( "../../app/controllers/users/registration_controller",
 require File.expand_path( "../../app/controllers/users/sessions_controller", __FILE__ )
 
 # Purge test database
-pool = Database::Pool.new
+pool = Database::Pool.instance
 pool.connect
 require File.expand_path( "../../db/schema", __FILE__ )
 pool.release

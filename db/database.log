@@ -1,1 +1,2 @@
-D, [2016-01-07T02:05:10.909227 #47546] DEBUG -- :   [1m[36m (9.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+D, [2016-01-08T18:31:12.654044 #61219] DEBUG -- :   [1m[36m (4.2ms)[0m  [1mDROP TABLE "users" CASCADE[0m
+D, [2016-01-08T18:31:12.662950 #61219] DEBUG -- :   [1m[35m (8.6ms)[0m  CREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 

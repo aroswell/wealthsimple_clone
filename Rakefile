@@ -71,25 +71,6 @@ namespace :app do
 end
 
 
-# desc "this is a test"
-# task :go, [:env] do |t, args|
-#   args.with_defaults( env: "development")
-#   ENV["APP_ENVIRONMENT"] = "#{args[:env]}"
-#   Rake::Task["dump"].execute
-#   Rake::Task["create"].execute
-#   Rake::Task["schema"].execute
-#   Rake::Task["seed"].execute
-#    # [:dump, :create, :schema, :seed]
-# end
-
-
-
-
-
-
-
-
-
 
 
 
