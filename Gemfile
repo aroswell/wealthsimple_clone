@@ -22,3 +22,6 @@ gem 'faker'
 
 # Thin web server
 # gem 'thin'
+
+# Rack Test
+gem 'rack-test', require: "rack/test"
