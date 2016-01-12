@@ -1,10 +1,15 @@
-# require File.expand_path("../../../models/user", __FILE__ )
+# require File.expand_path("../../../../helpers/helpers", __FILE__ )
 
 module UserController
   class RegistrationController
+    include Helpers
 
-    def self.create(params)
-      user_params = clean_user_params(params)
+    def initialize(params={})
+      @params = Params.new(params)
+    end
+
+    def create
+      user_params = clean_user_params
       user = User.new(user_params)
       if user.save
         # some kind of flash message goes here
@@ -16,8 +21,8 @@ module UserController
       end
     end
 
-    def self.fetch(params)
-      user_params = clean_user_params_for_signin(params)
+    def fetch
+      user_params = clean_user_params_for_signin
       user = User.find_by( email: user_params["email"])
 
       if user && (user.password == user_params[:password])
@@ -28,63 +33,63 @@ module UserController
       end
     end
 
-    def self.edit(params)
+    def edit
       # User can change email and password
       "Testing edit"
     end
 
-    def self.update(params)
+    def update
       # User can change email and password
       "Testing update"
     end
 
-    def self.delete(params)
+    def delete
       # user or admin can destroy their account
       "User: #{params[:first_name]} #{params[:last_name]}, will be deleted."
     end
 
     private
-      def self.clean_user_params(dirty_params)
+      def clean_user_params(dirty_params)
         strong_params( dirty_params, "user", ["first_name", "last_name", "email", "password"] )
       end
 
-      def self.clean_user_params_for_signin(dirty_params)
+      def clean_user_params_for_signin(dirty_params)
         strong_params( dirty_params, "user", [ "email", "password" ] )
       end
 
-      def self.strong_params( dirty_params, model, whitelist )
+      # def self.strong_params( dirty_params, model, whitelist )
 
-        # Does dirty_params have a key=model or a key=model.to_sym?
-        unless dirty_params.has_key?(model.to_sym) || dirty_params.has_key?(model.to_s)
-          raise "No key found for :#{model} or #{model.to_s}"
-        end
+      #   # Does dirty_params have a key=model or a key=model.to_sym?
+      #   unless dirty_params.has_key?(model.to_sym) || dirty_params.has_key?(model.to_s)
+      #     raise "No key found for :#{model} or #{model.to_s}"
+      #   end
 
-        # convert model to symbol
-        # convert all keys to symbols
-        model = model.to_sym if model.class == String
-        dirty_params = convert_hash_keys_to_symbols(dirty_params)
-        dirty_params[model] = convert_hash_keys_to_symbols(dirty_params[model])
-        whitelist.collect! do |key|
-          key.to_sym
-        end
+      #   # convert model to symbol
+      #   # convert all keys to symbols
+      #   model = model.to_sym if model.class == String
+      #   dirty_params = convert_hash_keys_to_symbols(dirty_params)
+      #   dirty_params[model] = convert_hash_keys_to_symbols(dirty_params[model])
+      #   whitelist.collect! do |key|
+      #     key.to_sym
+      #   end
 
-        # create a hash to hold the strong params
-        clean_params = {}
-        clean_params[model] = {}
+      #   # create a hash to hold the strong params
+      #   clean_params = {}
+      #   clean_params[model] = {}
 
-        whitelist.each do |key|
-          clean_params[model][key] = dirty_params[model][key] if dirty_params[model].has_key?(key)
-        end
+      #   whitelist.each do |key|
+      #     clean_params[model][key] = dirty_params[model][key] if dirty_params[model].has_key?(key)
+      #   end
 
-        return clean_params[model]
-      end
+      #   return clean_params[model]
+      # end
 
-      def self.convert_hash_keys_to_symbols(hash)
-        hash.keys.each do |key|
-          hash[key.to_sym] = hash.delete key
-        end
-        return hash
-      end
+      # def self.convert_hash_keys_to_symbols(hash)
+      #   hash.keys.each do |key|
+      #     hash[key.to_sym] = hash.delete key
+      #   end
+      #   return hash
+      # end
 
   end
 

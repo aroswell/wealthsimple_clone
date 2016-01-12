@@ -4,6 +4,7 @@
 ENV["APP_ENVIRONMENT"] = "test"
 
 require File.expand_path( "../../lib/database_module", __FILE__ )
+require File.expand_path( "../../helpers/helpers.rb", __FILE__ )
 require File.expand_path( "../../app/models/user", __FILE__ )
 require File.expand_path( "../../app/controllers/users/registration_controller", __FILE__ )
 require File.expand_path( "../../app/controllers/users/sessions_controller", __FILE__ )
