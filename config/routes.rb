@@ -1,6 +1,7 @@
 # Routes file for application
 
 require File.expand_path("../../lib/database_module", __FILE__ )
+require File.expand_path("../../helpers/helpers", __FILE__)
 require File.expand_path("../../app/models/user", __FILE__)
 require File.expand_path("../../app/controllers/application_controller", __FILE__)
 require File.expand_path("../../app/controllers/dashboard_controller", __FILE__)
@@ -23,21 +24,22 @@ end
 
 
 before do
-  puts "Before filter"
+  # puts "Before filter"
   pool.connect
 
   # @pool.connect
-  puts "[params] = #{params}"
+  # puts "[params] = #{params}"
   # puts "app = #{app}"
-  puts "Path info = #{request.path_info}\n"
+  # puts "Path info = #{request.path_info}\n"
   # puts "env = #{env}"
   # puts "response = #{response.body}"
   # puts "template cache = #{template_cache}"
 end
 
 after do
-  puts "After filter"
+  # puts "After filter"
   pool.release
+  # puts "response = #{response.header}"
 end
 
 # DashboardController routes
@@ -75,7 +77,7 @@ end
     end
 
     post '/signup' do
-      user = UserController::RegistrationController.create(params)
+      user = create_user
       session[:user_id] = user.id unless user.nil?
       redirect to('/')
     end
@@ -190,6 +192,10 @@ helpers do
 
   def delete_user_session
     UserController::SessionsController.delete(session)
+  end
+
+  def create_user
+    UserController::RegistrationController.new(params).create
   end
 
 end
