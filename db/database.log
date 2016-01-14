@@ -1,3 +1,8 @@
-D, [2016-01-13T04:40:16.453552 #19480] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
-D, [2016-01-13T04:40:16.460972 #19480] DEBUG -- :   [1m[35mSQL (0.8ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Brady"], ["last_name", "smith"], ["email", "smith_man@castle.com"], ["password_digest", "$2a$10$lkKPGJjdSdOUnnXq4RfqD.ttne9Hnkeb82993yUsgnc5dndD0fWHi"], ["created_at", "2016-01-13 09:40:16.456148"], ["updated_at", "2016-01-13 09:40:16.456148"]]
-D, [2016-01-13T04:40:16.462012 #19480] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+D, [2016-01-14T12:13:08.099067 #29732] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+D, [2016-01-14T12:13:08.106474 #29732] DEBUG -- :   [1m[35mSQL (0.9ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Ernest"], ["last_name", "Smith"], ["email", "uncle-pins@live.com"], ["password_digest", "$2a$10$Q3ZKxM972RH0JoPCuFhtTO78Iuq7b2GiDFsIhOQDEfzTrFRKmiddq"], ["created_at", "2016-01-14 17:13:08.101706"], ["updated_at", "2016-01-14 17:13:08.101706"]]
+D, [2016-01-14T12:13:08.107583 #29732] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+D, [2016-01-14T12:13:08.114319 #29732] DEBUG -- :   [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "uncle-pins@live.com"]]
+D, [2016-01-14T12:13:08.262414 #29732] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+D, [2016-01-14T12:13:08.263867 #29732] DEBUG -- :   [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Rose"], ["last_name", "Tomas"], ["email", "ending@jess.com"], ["password_digest", "$2a$10$JJtFWSP4zAyg71Fkfj/.DOWD22mGHbRyv0YAJKvqYgi7QamntTLLi"], ["created_at", "2016-01-14 17:13:08.262668"], ["updated_at", "2016-01-14 17:13:08.262668"]]
+D, [2016-01-14T12:13:08.265582 #29732] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+ECT COUNT(*) FROM "users"[0m

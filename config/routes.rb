@@ -91,7 +91,7 @@ end
     end
 
     post '/sign-in' do
-      user = UserController::RegistrationController.fetch(params)
+      user = fetch_user
       create_user_session(user)
       redirect to('/')
     end
@@ -196,6 +196,10 @@ helpers do
 
   def create_user
     UserController::RegistrationController.new(params).create
+  end
+
+  def fetch_user
+    UserController::RegistrationController.new(params).fetch
   end
 
 end

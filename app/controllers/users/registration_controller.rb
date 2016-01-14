@@ -14,7 +14,7 @@ module UserController
       user = User.new(user_params)
       if user.save
         # some kind of flash message goes here
-        puts "New user saved successfully"
+        puts "______New user saved successfully______"
         return user
       else
         # error message raised here
@@ -24,9 +24,9 @@ module UserController
 
     def fetch
       user_params = clean_user_params_for_signin
-      user = User.find_by( email: user_params["email"])
+      user = User.find_by( email: user_params[:email])
 
-      if user && (user.password == user_params[:password])
+      if user && user.authenticate(user_params[:password])
         return user
       else
         puts "You've entered an incorrect email and password combination."
@@ -58,8 +58,8 @@ module UserController
         params.require("user").permit( ["first_name", "last_name", "email", "password"] )
       end
 
-      def clean_user_params_for_signin(dirty_params)
-        strong_params( dirty_params, "user", [ "email", "password" ] )
+      def clean_user_params_for_signin
+        params.require("user").permit( ["email", "password"] )
       end
 
   end
