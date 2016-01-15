@@ -14,7 +14,6 @@ def pool
 end
 
 configure do
-  # set :run, false
   set :server, %w[thin mongrel webrick] # this is the default
   set :views, File.expand_path("../../app/views", __FILE__)
   set :public_folder, "./app/assets/styles"
@@ -28,20 +27,18 @@ end
 
 before do
   pool.connect
-
+  @current_user = RoutingHelper.current_user(session)
 end
 
 after do
-  # puts "After filter"
   pool.release
-  # puts "response = #{response.header}"
 end
 
 # DashboardController routes
     get '/' do
-      if current_user && current_user.approved?
+      if @current_user && @current_user.approved?
         erb :"dashboard/index"
-      elsif current_user
+      elsif @current_user
         redirect to('/onboarding')
       else
         redirect to '/sign-in'
@@ -50,21 +47,17 @@ end
 
     get '/onboarding' do
       # If visitor is not signed in, then redirect to sign-in page
-      if current_user
+      if @current_user
         erb :"dashboard/onboarding"
       else
         redirect to '/'
       end
     end
 
-    get '/search' do
-      Dashboard.search(params)
-    end
-
 
 # UserController routes
     get '/signup' do
-      unless RoutingHelper.current_user(session)
+      unless @current_user
         erb :"registrations/new_signup"
       else
         redirect to '/'
@@ -78,7 +71,7 @@ end
     end
 
     get '/sign-in' do
-      unless RoutingHelper.current_user(session)
+      unless @current_user
         erb :"sessions/signin"
       else
         redirect to '/'
