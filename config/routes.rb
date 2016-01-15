@@ -22,18 +22,13 @@ configure do
   set :session_secret, ENV["SECRET_TOKEN"]
 end
 
+# Variables available from Sinatra:
+# params, app, request, env, response, template_cache
+
 
 before do
-  # puts "Before filter"
   pool.connect
 
-  # @pool.connect
-  # puts "[params] = #{params}"
-  # puts "app = #{app}"
-  # puts "Path info = #{request.path_info}\n"
-  # puts "env = #{env}"
-  # puts "response = #{response.body}"
-  # puts "template cache = #{template_cache}"
 end
 
 after do
@@ -184,15 +179,15 @@ end
 helpers do
   class RoutingHelper
     def self.current_user(session)
-      UserController::SessionsController.current_user(session)
+      UserController::SessionsController.new.current_user(session)
     end
 
     def self.create_user_session(session, user)
-      UserController::SessionsController.create(session, user)
+      UserController::SessionsController.new.create(session, user)
     end
 
     def self.delete_user_session(session)
-      UserController::SessionsController.delete(session)
+      UserController::SessionsController.new.delete(session)
     end
 
     def self.create_user

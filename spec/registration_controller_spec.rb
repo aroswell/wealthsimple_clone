@@ -54,9 +54,6 @@ describe UserController::RegistrationController do
     it 'redirects after creating a new with 302 status' do
       allow(RoutingHelper).to receive(:create_user) { user }
       post '/signup', params
-      File.open('./test_log.html', 'w') do |f|
-        f.puts last_response.body
-      end
       expect(last_response.status).to eq(302)
     end
 
@@ -132,7 +129,9 @@ describe UserController::RegistrationController do
 
 end
 
-
+      # File.open('./test_log.html', 'w') do |f|
+      #   f.puts last_response.body
+      # end
 
 
 
