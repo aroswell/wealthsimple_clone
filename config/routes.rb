@@ -69,7 +69,7 @@ end
 
 # UserController routes
     get '/signup' do
-      unless current_user
+      unless RoutingHelper.current_user(session)
         erb :"registrations/new_signup"
       else
         redirect to '/'
@@ -77,13 +77,13 @@ end
     end
 
     post '/signup' do
-      user = create_user
+      user = RoutingHelper.create_user
       session[:user_id] = user.id unless user.nil?
       redirect to('/')
     end
 
     get '/sign-in' do
-      unless current_user
+      unless RoutingHelper.current_user(session)
         erb :"sessions/signin"
       else
         redirect to '/'
@@ -91,13 +91,13 @@ end
     end
 
     post '/sign-in' do
-      user = fetch_user
-      create_user_session(user)
+      user = RoutingHelper.fetch_user
+      RoutingHelper.create_user_session(session, user)
       redirect to('/')
     end
 
-    get '/logout' do
-      delete_user_session
+    delete '/logout' do
+      RoutingHelper.delete_user_session(session)
       redirect to('/')
     end
 
@@ -182,24 +182,26 @@ end
 
 # helper methods: method will be available to routing method blocks and to the views
 helpers do
-  def current_user
-    UserController::SessionsController.current_user(session)
-  end
+  class RoutingHelper
+    def self.current_user(session)
+      UserController::SessionsController.current_user(session)
+    end
 
-  def create_user_session(user)
-    UserController::SessionsController.create(session, user)
-  end
+    def self.create_user_session(session, user)
+      UserController::SessionsController.create(session, user)
+    end
 
-  def delete_user_session
-    UserController::SessionsController.delete(session)
-  end
+    def self.delete_user_session(session)
+      UserController::SessionsController.delete(session)
+    end
 
-  def create_user
-    UserController::RegistrationController.new(params).create
-  end
+    def self.create_user
+      UserController::RegistrationController.new(params).create
+    end
 
-  def fetch_user
-    UserController::RegistrationController.new(params).fetch
+    def self.fetch_user
+      UserController::RegistrationController.new(params).fetch
+    end
   end
 
 end
