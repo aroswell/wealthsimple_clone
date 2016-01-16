@@ -3,7 +3,7 @@
 
 This app is a knock off of www.wealthsimple.com. It was originally built in Rails but I've decided to use Sinatra and venture beyond some of the Rails magic.
 
-###Configuration
+###Configuration:
 The app is set up to read environment variables for database and secret token from a .dev_env and .test_env file.
 
 For example: (inside the .dev_env or .test_env)
@@ -14,13 +14,15 @@ For example: (inside the .dev_env or .test_env)
  SECRET_TOKEN=secret token goes here
 ```
 
-###Running the App
+###Running the App:
 Simply run the rake task `$: rake app:run`
 
+###Test Specs:
+See the ./spec folder details on Rspec testing specs
 
 ###Other features:
 To list all rake task: `$: rake -T`
 
-Some rake task allow you to pass in an environment variable (e.g. Testing) when reseting a database.
+Some rake task allow you to pass in an environment variable (e.g. test) when reseting a database.
 
 
