@@ -9,9 +9,6 @@ require File.expand_path("../../app/controllers/users/registration_controller", 
 require File.expand_path("../../app/controllers/users/sessions_controller", __FILE__)
 require File.expand_path("../../app/controllers/forms_controller", __FILE__)
 
-def pool
-  Database::Pool.instance
-end
 
 configure do
   set :server, %w[thin mongrel webrick] # this is the default
@@ -21,9 +18,12 @@ configure do
   set :session_secret, ENV["SECRET_TOKEN"]
 end
 
+def pool
+  Database::Pool.instance
+end
+
 # Variables available from Sinatra:
 # params, app, request, env, response, template_cache
-
 
 before do
   pool.connect
