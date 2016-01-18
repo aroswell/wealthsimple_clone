@@ -14,7 +14,7 @@ describe UserController::RegistrationController do
   describe 'GET signup' do
     let(:routing_helper) { RoutingHelper }
 
-    context "Http responses depending on current user status" do
+    context "http responses depending on current user status" do
       it "returns 200 response even if THERE IS NO current_user" do
         allow(routing_helper).to receive(:current_user) { false }
         get '/signup'
