@@ -1,3 +1,17 @@
-p {
-  color: brown;
+.form-container {
+  margin-top: 100px;
+
+}
+
+.form-control {
+  margin: 15px;
+  height: 50px;
+}
+
+.sign-in-btn {
+  margin-left: 120px;
+  /*position: absolute;*/
+  /*margin: auto;*/
+  width: 40%;
+  height: 40px;
 }

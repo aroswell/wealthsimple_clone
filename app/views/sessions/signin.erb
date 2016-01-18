@@ -1,18 +1,16 @@
-<fieldset>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="form-container col-md-4">
+    <fieldset>
 
-  <form action="/sign-in" method="post">
-    <div>
-      <label for="email">Email</label>
-      <input type="text" id="email" name="user[email]" autofocus>
-    </div>
+      <form action="/sign-in" method="post">
+        <input type="email" id="email" name="user[email]" class="form-control text-center" placeholder="Email address" autofocus>
+        <input type="password" id="password" name="user[password]" class="form-control text-center" placeholder="Password">
+        <input type="submit" value="Sign In" class="btn btn-primary sign-in-btn text-center">
+      </form>
 
-    <div>
-      <label for="password">Password</label>
-      <input type="password" id="password" name="user[password]">
-    </div>
+    </fieldset>
+  </div>
+  <div class="col-md-4"></div>
+</div>
 
-    <input type="submit" value="SIGN IN" class="btn-primary">
-
-  </form>
-
-</fieldset>

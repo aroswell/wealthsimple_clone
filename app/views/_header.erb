@@ -1,42 +1,33 @@
-<div class="sticky-wrapper">
-    <header id="header" class="header header-v1 clearfix">
-        <div class="container">
-            <div id="logo-navigation" class="sixteen columns">
-                <div id="logo" class="logo">
-                    <a href="http://www.wealthsimple-clone.com/">
-                        <img src="http://www.wealthsimple-clone.com/wp-content/uploads/2015/07/wealthsimple-clone-logo.png" alt="wealthsimple-clone" class="logo_standard">
-                    </a>
-                    <a href="http://www.wealthsimple-clone.com/">
-                        <img src="http://www.wealthsimple-clone.com/wp-content/uploads/2015/07/wealthsimple-clone-logo.png" alt="wealthsimple-clone" class="logo_transparent">
-                    </a>
-                    <a href="http://www.wealthsimple-clone.com/">
-                        <img src="http://www.wealthsimple-clone.com/wp-content/uploads/2015/07/wealthsimple-clone-logo-retina.png" width="250" height="40" alt="wealthsimple-clone" class="logo_retina">
-                    </a>
-                    <a href="http://www.wealthsimple-clone.com/">
-                        <img src="http://www.wealthsimple-clone.com/wp-content/uploads/2015/07/wealthsimple-clone-logo-retina.png" width="250" height="40" alt="wealthsimple-clone" class="logo_retina_transparent">
-                    </a>
-                </div>
-                <div id="navigation" class="clearfix">
-                    <div class="header-icons"></div>
-                    <ul id="nav" class="menu sf-js-enabled sf-arrows">
-                        <li id="menu-item-15442" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15442">
-                            <a href="#about">About</a>
-                        </li>
-                        <li id="menu-item-15443" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15443">
-                            <a href="#how-it-works">How it works</a>
-                        </li>
-                        <li id="menu-item-15444" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15444">
-                            <a href="#why-just-wealth">Why wealthsimple-clone?</a>
-                        </li>
-                        <li id="menu-item-15446" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15446">
-                            <a href="#resources">Resources</a>
-                        </li>
-                        <li id="menu-item-15411" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15411">
-                            <a href="#Get-Started">Get Started</a>
-                        </li>
+<div id="header" class="navbar navbar-default">
+    <div class="container">
+        <div class="sixteen columns">
+            <div class="topbar-col1"></div>
+            <div class="topbar-col2">
+                <div class="menu-onepage-container">
+                    <ul id="menu-onepage" class="nav navbar-nav">
+                        <%# if current_user.nil? %>
+                            <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
+                              <a href="#">Start Investing Now</a>
+                            </li>
+                        <%# else %>
+                            <%# if current_user.admin %>
+                                <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
+                                  <a href="#">Admin Panel</a>
+                                </li>
+                            <%#end %>
+                                <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
+                                  <a href="#">Home</a>
+                                </li>
+                                <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
+                                  <form action="/logout" method="post">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input type="submit" value="Log Out" class="btn">
+                                  </form>
+                                </li>
+                        <%# end %>
                     </ul>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
 </div>
