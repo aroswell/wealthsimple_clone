@@ -5,8 +5,19 @@
 
 .footer-container {
   background-color: #d1d1e0;
+  padding-bottom: 20px;
 }
 
 #searchform {
   margin-top: 20px;
+}
+
+.search-input {
+  width: 65%;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 4px;
+  border-width: 1px;
 }
