@@ -1,4 +1,30 @@
 
+.navbar-default {
+  height: 100px;
+  background-image: none;
+  background-color: #f0f0f5;
+
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #3366ff;
+  margin-top: 30px;
+  /*margin-bottom: 10px;*/
+}
+
+.navbar-default .navbar-brand {
+  color: #3366ff;
+  margin-left: 20px;
+}
+
+.nav .navbar-nav {
+  margin-right: 20px;
+}
+
+.nav-btn {
+  margin-top: 35px;
+}
+
 .main-content {
   height: 500px;
 }
@@ -34,3 +60,7 @@
 a:link {
   text-decoration: none;
 }
+
+
+
+

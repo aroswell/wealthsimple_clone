@@ -1,33 +1,60 @@
-<div id="header" class="navbar navbar-default">
-    <div class="container">
-        <div class="sixteen columns">
-            <div class="topbar-col1"></div>
-            <div class="topbar-col2">
-                <div class="menu-onepage-container">
-                    <ul id="menu-onepage" class="nav navbar-nav">
-                        <%# if current_user.nil? %>
-                            <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
-                              <a href="#">Start Investing Now</a>
-                            </li>
-                        <%# else %>
-                            <%# if current_user.admin %>
-                                <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
-                                  <a href="#">Admin Panel</a>
-                                </li>
-                            <%#end %>
-                                <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
-                                  <a href="#">Home</a>
-                                </li>
-                                <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
-                                  <form action="/logout" method="post">
-                                    <input type="hidden" name="_method" value="delete">
-                                    <input type="submit" value="Log Out" class="btn">
-                                  </form>
-                                </li>
-                        <%# end %>
-                    </ul>
-                </div>
+<div id="header">
+  <div class="row">
+      <nav class="navbar navbar-default">
+        <div class="col-md-12">
+          <div class="col-md-4">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><h2>WealthSimple-Clone</h2></a>
             </div>
+
+          </div>
+          <div class="col-md-5 col-md-offset-3">
+            <div class="collaspe navbar-collapse" id="navbar-collapse-1">
+               <ul class="nav navbar-nav">
+                  <%# if current_user.nil? %>
+
+                    <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
+                      <a href="#">Start Investing Now</a>
+                    </li>
+
+                  <%# else %>
+                    <%# if current_user.admin %>
+
+                      <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
+                        <a href="#">Admin Panel</a>
+                      </li>
+
+                    <%#end %>
+
+                      <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
+                        <a href="#">Home</a>
+                      </li>
+
+                      <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
+                        <form action="/logout" method="post" class="nav-btn">
+                          <input type="hidden" name="_method" value="delete">
+                          <input type="submit" value="Log Out" class="btn btn-primary">
+                        </form>
+                      </li>
+
+                  <%# end %>
+                </ul>
+            </div>
+
+          </div>
+
         </div>
-    </div>
+
+      </nav>
+
+
+
+
+  </div>
 </div>
