@@ -5,4 +5,10 @@ class User < ActiveRecord::Base
     # TODO via TDD
     false
   end
+
+  def admin?
+    # TODO via TDD
+    false
+  end
+
 end

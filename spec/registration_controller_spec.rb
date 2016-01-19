@@ -16,7 +16,7 @@ describe UserController::RegistrationController do
 
     context "http responses depending on current user status" do
       it "returns 200 response even if THERE IS NO current_user" do
-        allow(routing_helper).to receive(:current_user) { false }
+        allow(routing_helper).to receive(:current_user) { nil }
         get '/signup'
         expect(last_response.status).to eq(200)
 
@@ -39,7 +39,7 @@ describe UserController::RegistrationController do
 
     context "Response Body for GET signup" do
       it "response body contains signup form when there is NO current user" do
-        allow(routing_helper).to receive(:current_user) { false }
+        allow(routing_helper).to receive(:current_user) { nil }
         get '/signup'
         expect(last_response.body).to include("<form action=\"/signup\" method=\"post\">")
       end
@@ -80,7 +80,7 @@ describe UserController::RegistrationController do
 
     context "http responses depending on current user status" do
       it "returns 200 response when THERE IS NO current_user" do
-        allow(routing_helper).to receive(:current_user) { false }
+        allow(routing_helper).to receive(:current_user) { nil }
         get '/sign-in'
         expect(last_response.status).to eq(200)
       end
@@ -94,7 +94,7 @@ describe UserController::RegistrationController do
 
     context "Response Body for GET sign-in" do
       it "response body contains sign-in form when THERE IS NO current user" do
-        allow(routing_helper).to receive(:current_user) { false }
+        allow(routing_helper).to receive(:current_user) { nil }
         get '/sign-in'
         expect(last_response.body).to include("<form action=\"/sign-in\" method=\"post\">")
       end

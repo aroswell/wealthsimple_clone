@@ -28,7 +28,7 @@ describe DashboardController do
     end
     context 'current_user == true && approved' do
       it 'shows dashboard index page if current_user == true and current_user has been approved' do
-        user = object_double( User.create, :approved? => true )
+        user = object_double( User.create, :approved? => true, :admin? => false )
         allow(routing_helper).to receive(:current_user) { user }
         get '/'
         expect(last_response.body).to include("<!-- Client dashboard -->")
@@ -56,3 +56,9 @@ describe DashboardController do
   end
 
 end
+
+        # File.open('./test_log.html', 'w') do |f|
+        #   f.puts last_response.body
+        # end
+
+

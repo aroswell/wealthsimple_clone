@@ -12,39 +12,42 @@
               </button>
               <a class="navbar-brand" href="#"><h2>WealthSimple-Clone</h2></a>
             </div>
-
           </div>
+
           <div class="col-md-5 col-md-offset-3">
             <div class="collaspe navbar-collapse" id="navbar-collapse-1">
-               <ul class="nav navbar-nav">
-                  <%# if current_user.nil? %>
+              <ul class="nav navbar-nav pull-right">
+                <% if @current_user.nil? %>
 
-                    <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
-                      <a href="#">Start Investing Now</a>
+                  <% investing_path = "/signup" if request.path == '/sign-in' %>
+                  <% investing_path = "/sign-in" if request.path == '/signup' %>
+
+                  <li class="header-menu-item">
+                    <a href=<%= investing_path %>>Start Investing Now</a>
+                  </li>
+
+                <% else %>
+                  <% if @current_user.admin? %>
+
+                    <li class="header-menu-item">
+                      <a href="#">Admin Panel</a>
                     </li>
 
-                  <%# else %>
-                    <%# if current_user.admin %>
+                  <%end %>
 
-                      <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
-                        <a href="#">Admin Panel</a>
-                      </li>
+                    <li class="header-menu-item">
+                      <a href="#">Home</a>
+                    </li>
 
-                    <%#end %>
+                    <li class="header-menu-item">
+                      <form action="/logout" method="post" class="nav-btn">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="submit" value="Log Out" class="btn btn-primary">
+                      </form>
+                    </li>
 
-                      <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
-                        <a href="#">Home</a>
-                      </li>
-
-                      <li class="pagescroll menu-item menu-item-type-custom menu-item-object-custom">
-                        <form action="/logout" method="post" class="nav-btn">
-                          <input type="hidden" name="_method" value="delete">
-                          <input type="submit" value="Log Out" class="btn btn-primary">
-                        </form>
-                      </li>
-
-                  <%# end %>
-                </ul>
+                <% end %>
+              </ul>
             </div>
 
           </div>

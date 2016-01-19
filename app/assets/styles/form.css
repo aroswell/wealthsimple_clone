@@ -1,5 +1,5 @@
 .form-container {
-  margin-top: 80px;
+  margin-top: 40px;
 
 }
 
@@ -14,3 +14,8 @@
   height: 40px;
 }
 
+.sign-up-btn {
+  margin-left: 120px;
+  width: 40%;
+  height: 40px;
+}

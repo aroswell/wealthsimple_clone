@@ -5,71 +5,71 @@
 <!-- Top row  -->
   <div class="row">
     <div class="col-md-12">
-      <h1 class="fontsize-xxxxl text-center">
+      <h1 class="text-center">
         <span>Hi there,</span>
         <%# unless current_user.nil? || current_user.first_name.blank? %>
-          <%= current_user.first_name if current_user %>
+          <%= @current_user.first_name if @current_user %>
         <%# end %>
       </h1>
-      <h3 class="fontsize-l text-center">
+      <h4 class="text-center">
         Please complete the following steps to open an investment account at the WealthSimple-Clone
-      </h3>
+      </h4>
     </div>
   </div>
 
 <!-- Middle row with steps -->
   <div class="row jumbotron">
     <table class="table-responsive" >
-      <tr>
-        <td>
+      <!-- <tr> -->
+        <!-- <td> -->
           <%# if @risk_completed %>
-            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true" ></span>
+            <!-- <span class="glyphicon glyphicon-ok-sign" aria-hidden="true" ></span> -->
           <%# else %>
             <!-- <div class="round-number">1</div> -->
           <%# end %>
-        </td>
-        <td>
+        <!-- </td> -->
+        <!-- <td> -->
           <%# if @kyc_completed %>
-            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true" ></span>
+            <!-- <span class="glyphicon glyphicon-ok-sign" aria-hidden="true" ></span> -->
           <%# else %>
             <!-- <div class="round-number">2</div> -->
           <%# end %>
-        </td>
-        <td>
+        <!-- </td> -->
+        <!-- <td> -->
           <%# if @photo_upload_completed %>
-            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true" ></span>
+            <!-- <span class="glyphicon glyphicon-ok-sign" aria-hidden="true" ></span> -->
           <%# else %>
             <!-- <div class="round-number">3</div> -->
           <%# end %>
+        <!-- </td> -->
+      <!-- </tr> -->
+
+      <tr>
+        <td>
+          <h3><span class="bold" style="color: #77c043" >Step 1 </span><br>Complete Your Personal Investment Sheet</h3>
         </td>
+
+        <td>
+          <h3><span class="bold" style="color: #77c043" >Step 2</span> <br>Complete Investment Questionnaire</h3>
+        </td>
+
+        <td>
+          <h3><span class="bold" style="color: #77c043" >Step 3</span> <br>Upload Photo ID and Sign Investment Application(s) Online</h3>
+        </td>
+
       </tr>
 
       <tr>
         <td>
-          <h3><span class="bold" style="color: #77c043" >Step 1 </span><br> Complete Investment Questionnaire</h3>
+            Once we know more about you, we can then recommend one of our portfolios to meet your needs.
         </td>
 
         <td>
-          <h3><span class="bold" style="color: #77c043" >Step 2</span> <br> Complete Your Personal Investment Sheet</h3>
+            Tell us how you want to manage risk. We'll choose a portfolio to reflect this.
         </td>
 
         <td>
-          <h3><span class="bold" style="color: #77c043" >Step 3</span> <br> Upload Photo ID and Sign <br> Investment Application(s) Online</h3>
-        </td>
-
-      </tr>
-
-      <tr>
-        <td>
-            Once we know your investing situation, we can then recommend one of our portfolios to meet your needs.
-        </td>
-
-        <td>
-            Once we know your investing situation, we can then recommend one of our portfolios to meet your needs.
-        </td>
-
-        <td>
-            Once we know your investing situation, we can then recommend one of our portfolios to meet your needs.
+            Last step. Just sign off on your application and upload your id.
         </td>
 
       </tr>
@@ -102,10 +102,10 @@
 
 
 <!-- Bottom row -->
-  <div class="row">
+  <div class="row wealthsimple-clone-team">
     <div class="row">
       <div class="col-md-12 text-center">
-        <h2> <br> Your WealthSimple-Clone Team: Fake Investing For You <br> </h2>
+        <h2 class="team-section-title"> <br> Your WealthSimple-Clone Team: Fake Investing For You <br> </h2>
       </div>
     </div>
 

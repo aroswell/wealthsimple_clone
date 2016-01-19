@@ -65,7 +65,7 @@ end
     end
 
     post '/signup' do
-      user = RoutingHelper.create_user
+      user = RoutingHelper.create_user(params)
       session[:user_id] = user.id unless user.nil?
       redirect to('/')
     end
@@ -79,7 +79,7 @@ end
     end
 
     post '/sign-in' do
-      user = RoutingHelper.fetch_user
+      user = RoutingHelper.fetch_user(params)
       RoutingHelper.create_user_session(session, user)
       redirect to('/')
     end
@@ -183,11 +183,11 @@ helpers do
       UserController::SessionsController.new.delete(session)
     end
 
-    def self.create_user
+    def self.create_user(params)
       UserController::RegistrationController.new(params).create
     end
 
-    def self.fetch_user
+    def self.fetch_user(params)
       UserController::RegistrationController.new(params).fetch
     end
   end

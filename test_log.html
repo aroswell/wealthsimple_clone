@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="stylesheet" media="all" type="text/css" href="application.css" />
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript" src="bootstrap.min.js"></script>
+  <title>WealthSimple Clone</title>
+
+</head>
+
+<body>
+  <div id="header">
+  <div class="row">
+      <nav class="navbar navbar-default">
+        <div class="col-md-12">
+          <div class="col-md-4">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><h2>WealthSimple-Clone</h2></a>
+            </div>
+          </div>
+
+          <div class="col-md-5 col-md-offset-3">
+            <div class="collaspe navbar-collapse" id="navbar-collapse-1">
+              <ul class="nav navbar-nav pull-right">
+                
+                  
+
+                    <li class="header-menu-item">
+                      <a href="#">Home</a>
+                    </li>
+
+                    <li class="header-menu-item">
+                      <form action="/logout" method="post" class="nav-btn">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="submit" value="Log Out" class="btn btn-primary">
+                      </form>
+                    </li>
+
+                
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+
+      </nav>
+
+
+
+
+  </div>
+</div>
+
+
+  <div class="main-content">
+    <div class="container">
+      <!-- Client dashboard -->
+<div class='row'>
+  <div class="col-md-12">
+    <h3>THIS IS THE CLIENT'S DASHBOARD. IT WILL ACCESS DATA VIA API.</h3>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+
+  <footer class="footer-container clearfix">
+  <div class="container">
+    <div class="row">
+      <div id="contact-2" class="widget widget_contact col-md-3">
+        <h3>Contact</h3>
+        <address>
+          <span class="address"><i class="fa fa-map-marker"></i><span class="address-overflow">1 Jane St., Suite 101,<br> Toronto, Ontario M5E 1W7</span><br>
+          <span class="phone"><i class="fa fa-phone"></i><strong>Phone:</strong> (647) 232-1234</span><br>
+          <span class="email"><i class="fa fa-envelope"></i><strong>E-Mail:</strong> <a href="mailto:info@wealthsimple-clone.com">info@wealthsimple-clone.com</a></span>
+        </address>
+      </div>
+      <div id="footer-menu" class="widget widget_nav_menu col-md-3">
+        <h3>Navigation</h3>
+        <div class="menu-wealthsimple-clone-footer-navigation-container">
+          <ul id="menu-wealthsimple-clone-footer-navigation" class="footer-menu-list">
+            <li class="footer-nav-menu menu-item-1">
+              <a href="#about">About</a>
+            </li>
+            <li class="footer-nav-menu menu-item-2">
+              <a href="#how-it-works">How it works</a>
+            </li>
+            <li class="footer-nav-menu menu-item-3">
+              <a href="#why-just-wealth">Why wealthsimple-clone?</a>
+            </li>
+            <li class="footer-nav-menu menu-item-4">
+              <a href="#resources">Resources</a>
+            </li>
+            <li class="footer-nav-menu menu-item-5">
+              <a href="#Get-Started">Get Started</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="text-3" class="widget widget_text col-md-3">
+        <h3>How Investing is Really Done</h3>
+        <div class="textwidget">
+          WealthSimple-Clone gives Canadians a new way to invest. Our simple to use online investment tool don't work you but work for you. Join us, come be in the know.
+        </div>
+      </div>
+
+      <div id="search-3" class="widget widget_search col-md-3">
+        <form action="#" id="searchform" method="get" class="form-inline">
+          <input type="text" class="search-input" id="s" name="s" value="What you looking for?" onfocus="if(this.value=='To search type and hit enter')this.value='';" onblur="if(this.value=='')this.value='What you looking for?';" autocomplete="off">
+          <input type="submit" value="Search" id="searchsubmit" class="btn btn-primary">
+        </form>
+      </div>
+    </div>
+    <div class="row bottom-banner"></div>
+  </div>
+</footer>
+
+
+</body>
+</html>
