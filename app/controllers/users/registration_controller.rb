@@ -24,7 +24,7 @@ module UserController
 
     def fetch
       user_params = clean_user_params_for_signin
-      user = User.find_by( email: user_params[:email])
+      user = User.find_by( email: user_params["email"])
 
       if user && user.authenticate(user_params[:password])
         return user

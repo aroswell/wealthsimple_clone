@@ -44,6 +44,19 @@ module Helpers
       clean_params
     end
 
+    def [](key)
+      value = (fetch key, nil) || (fetch key.to_s, nil) || (fetch key.to_sym, nil)
+    end
+
+    def []=(key,val)
+      if (key.is_a? String) || (key.is_a? Symbol) #clear if setting str/sym
+          self.delete key.to_sym
+          self.delete key.to_s
+      end
+      merge!({key => val})
+    end
+
+
     private
       # change the key inside the params object to a symbol
       def key_to_symbol(key)
@@ -82,13 +95,27 @@ params = {first_name: "Kofi",
             wrongkey: "bogus value"
           }
 
-b = Helpers::Params.new(params)
-puts b
+# b = Helpers::Params.new(params)
+# puts b
+
+ppl = Helpers::Params.new
+puts ppl
+ppl[:name] = "Kwame"
+puts ppl["name"]
+ppl["name"] = "Ayana"
+puts ppl["name"]
+puts ppl[:name]
+
+
+
+
+
+
 
 # puts b.require("user")
 # f = b.require("user").permit([ "passwd" ])
-f = b.permit(["first_name", "last_name", "email", "password"])
-puts f
+# f = b.permit(["first_name", "last_name", "email", "password"])
+# puts f
 
 # class ObscuringReferences
 #  attr_reader :data

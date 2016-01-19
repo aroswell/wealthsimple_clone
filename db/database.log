@@ -1,0 +1,9 @@
+D, [2016-01-19T03:49:56.543615 #26413] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2016-01-19T03:49:56.867524 #26413] DEBUG -- :   [1m[35m (0.3ms)[0m  ROLLBACK
+ INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Rose"], ["last_name", "Tomas"], ["email", "ending@jess.com"], ["password_digest", "$2a$10$GelIsyV/O1cMduGh7oifh.6Htm3e2byn.Tf56DLqNsIYOgo1n5M2y"], ["created_at", "2016-01-19 08:49:57.281573"], ["updated_at", "2016-01-19 08:49:57.281573"]]
+D, [2016-01-19T03:49:57.283997 #26413] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+T[0m
+D, [2016-01-19T03:49:57.126074 #26413] DEBUG -- :   [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "uncle-pins@live.com"]]
+, [2016-01-19T03:49:57.446031 #26413] DEBUG -- :   [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Ricky"], ["last_name", "Castle"], ["email", "nikki_heat@castle.com"], ["password_digest", "$2a$10$liy6m7OMzGPrfNB1hQQVqe43Yz6DgBDNlYaonfDlvqR88hlipbxhC"], ["created_at", "2016-01-19 08:49:57.444973"], ["updated_at", "2016-01-19 08:49:57.444973"]]
+D, [2016-01-19T03:49:57.447357 #26413] DEBUG -- :   [1m[35m (1.0ms)[0m  COMMIT
+D, [2016-01-19T03:49:57.448385 #26413] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
