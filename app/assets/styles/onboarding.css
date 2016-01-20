@@ -1,3 +1,22 @@
 .jumbotron {
   margin-top: 10px;
 }
+
+.jumbotron p {
+  margin-bottom: 5px;
+}
+
+.jumbotron h3 {
+  margin-top: 5px;
+}
+
+.jumbotron .steps {
+  color: #77c043;
+  font-size: 35px;
+  font-weight: bold;
+
+}
+
+.jumbotron .step-content {
+  height: 100px;
+}

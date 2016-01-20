@@ -6,10 +6,7 @@
   <div class="row">
     <div class="col-md-12">
       <h1 class="text-center">
-        <span>Hi there,</span>
-        <%# unless current_user.nil? || current_user.first_name.blank? %>
-          <%= @current_user.first_name if @current_user %>
-        <%# end %>
+        <span><em>Hi there,<%= @current_user.first_name if @current_user %></em></span>
       </h1>
       <h4 class="text-center">
         Please complete the following steps to open an investment account at the WealthSimple-Clone
@@ -19,85 +16,27 @@
 
 <!-- Middle row with steps -->
   <div class="row jumbotron">
-    <table class="table-responsive" >
-      <!-- <tr> -->
-        <!-- <td> -->
-          <%# if @risk_completed %>
-            <!-- <span class="glyphicon glyphicon-ok-sign" aria-hidden="true" ></span> -->
-          <%# else %>
-            <!-- <div class="round-number">1</div> -->
-          <%# end %>
-        <!-- </td> -->
-        <!-- <td> -->
-          <%# if @kyc_completed %>
-            <!-- <span class="glyphicon glyphicon-ok-sign" aria-hidden="true" ></span> -->
-          <%# else %>
-            <!-- <div class="round-number">2</div> -->
-          <%# end %>
-        <!-- </td> -->
-        <!-- <td> -->
-          <%# if @photo_upload_completed %>
-            <!-- <span class="glyphicon glyphicon-ok-sign" aria-hidden="true" ></span> -->
-          <%# else %>
-            <!-- <div class="round-number">3</div> -->
-          <%# end %>
-        <!-- </td> -->
-      <!-- </tr> -->
+    <div class="col-md-4">
+      <p class="bold steps" > Step 1 </p>
+      <h3>Complete Your Personal Investment Sheet</h3>
+      <p class="step-content">Once we know more about you, we can then recommend one of our portfolios to meet your needs.</p>
+      <p><button type="button" class="btn btn-default" formaction="#">Get started</button></p>
 
-      <tr>
-        <td>
-          <h3><span class="bold" style="color: #77c043" >Step 1 </span><br>Complete Your Personal Investment Sheet</h3>
-        </td>
+    </div>
+    <div class="col-md-4">
+      <p class="bold steps" > Step 2 </p>
+      <h3>Complete Your Personal Investment Sheet</h3>
+      <p class="step-content">Tell us how you want to manage risk. We'll choose a portfolio to reflect this.</p>
+      <p><button type="button" class="btn btn-default" formaction="#">Get started</button></p>
 
-        <td>
-          <h3><span class="bold" style="color: #77c043" >Step 2</span> <br>Complete Investment Questionnaire</h3>
-        </td>
+    </div>
+    <div class="col-md-4">
+      <p class="bold steps" > Step 3 </p>
+      <h3>Complete Your Personal Investment Sheet</h3>
+      <p class="step-content">Last step. Just sign off on your application and upload your id.</p>
+      <p><button type="button" class="btn btn-default" formaction="#">Get started</button></p>
 
-        <td>
-          <h3><span class="bold" style="color: #77c043" >Step 3</span> <br>Upload Photo ID and Sign Investment Application(s) Online</h3>
-        </td>
-
-      </tr>
-
-      <tr>
-        <td>
-            Once we know more about you, we can then recommend one of our portfolios to meet your needs.
-        </td>
-
-        <td>
-            Tell us how you want to manage risk. We'll choose a portfolio to reflect this.
-        </td>
-
-        <td>
-            Last step. Just sign off on your application and upload your id.
-        </td>
-
-      </tr>
-
-      <tr>
-        <td>
-          <%# if @risk_started %>
-            <p><%#= button_to "EDIT", risk_assessment_edit_path, method: 'get', disabled: @kyc_completed, class: "btn btn-primary" %></p>
-          <%# else %>
-            <p><%#= button_to "GET STARTED", risk_assessment_new_path, method: 'get', disabled: @kyc_completed, class: "btn btn-primary" %></p>
-          <%# end %>
-        </td>
-
-        <td>
-          <%# if @kyc_in_progress %>
-            <p><%#= button_to "EDIT", know_your_client_new_path, method: 'get', disabled: @kyc_completed, class: "btn btn-primary" %></p>
-          <%# else %>
-            <p><%#= button_to "GET STARTED", know_your_client_new_path, method: 'get', disabled: @kyc_completed, class: "btn btn-primary" %></p>
-          <%# end %>
-        </td>
-
-        <td>
-          <p><%#= button_to "GET STARTED", sign_form_new_path, method: "get", disabled: @forms_not_completed, class: "btn btn-primary" %></p>
-        </td>
-
-      </tr>
-
-    </table>
+    </div>
   </div>
 
 
