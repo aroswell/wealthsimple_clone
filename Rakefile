@@ -8,7 +8,7 @@ namespace :db do
   end
 
   desc "Run database schema file"
-  task :schema => [:db_module] do
+  task :schema, [:env] => [:db_module] do
     puts "Running schema ..."
     pool = Database::Pool.instance
     pool.connect
