@@ -26,7 +26,9 @@ namespace :db do
       load 'db/seed.rb'
       pool.release
     elsif args[:env] == "test"
-      puts "Not seed data availabe for test database"
+      puts "No seed data availabe for test database"
+    elsif args[:env] == "production"
+      puts "No seed data availabe for production database"
     end
 
   end
