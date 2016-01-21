@@ -28,7 +28,12 @@ namespace :db do
     elsif args[:env] == "test"
       puts "No seed data availabe for test database"
     elsif args[:env] == "production"
-      puts "No seed data availabe for production database"
+      puts "Seeding data for production database"
+      puts "Attempting to seed data..."
+      pool = Database::Pool.instance
+      pool.connect
+      load 'db/seed.rb'
+      pool.release
     end
 
   end
