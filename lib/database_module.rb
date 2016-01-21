@@ -11,10 +11,9 @@ module Database
       database: ENV["DB_NAME"],
       username: ENV["DB_USERNAME"],
       password: ENV["DB_PASSWORD"],
-      host: 'localhost',
+      host: ENV["HOST"],
       encoding: 'utf8',
       pool: 5
-      # timeout: 7000
     }
   end
 
