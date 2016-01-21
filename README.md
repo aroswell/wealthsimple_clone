@@ -8,6 +8,7 @@ The app is set up to read environment variables for database and secret token fr
 
 For example: (inside the .dev_env or .test_env)
 ```
+ HOST=host name goes here
  DB_NAME_DEV=database name goes here
  DB_USERNAME=user name
  DB_PASSWORD=password
