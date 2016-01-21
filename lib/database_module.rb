@@ -8,7 +8,7 @@ module Database
   def self.default_config
     {
       adapter: 'postgresql',
-      database: ENV["DB_NAME_DEV"],
+      database: ENV["DB_NAME"],
       username: ENV["DB_USERNAME"],
       password: ENV["DB_PASSWORD"],
       host: 'localhost',
@@ -21,13 +21,13 @@ module Database
   class Setup
     def self.create
       conn = PG.connect(dbname: 'postgres')
-      conn.exec("CREATE DATABASE #{ENV["DB_NAME_DEV"]} WITH OWNER #{ENV["DB_USERNAME"]}")
+      conn.exec("CREATE DATABASE #{ENV["DB_NAME"]} WITH OWNER #{ENV["DB_USERNAME"]}")
       conn.exec("ALTER USER #{ENV["DB_USERNAME"]} WITH PASSWORD '#{ENV["DB_PASSWORD"]}'")
     end
 
     def self.dump
       conn = PG.connect(dbname: 'postgres')
-      conn.exec("DROP DATABASE #{ENV["DB_NAME_DEV"]}")
+      conn.exec("DROP DATABASE #{ENV["DB_NAME"]}")
     end
   end
 

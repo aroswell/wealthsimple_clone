@@ -20,8 +20,14 @@ gem 'activerecord', require: 'active_record'
 
 gem 'faker'
 
+# Sinatra server
+gem 'sinatra', '1.4.6'
+
 # Thin web server
-# gem 'thin'
+gem 'thin'
+
+# Security
+gem 'bcrypt-ruby', '~> 3.1', '>= 3.1.5'
 
 # Rack Test
 gem 'rack-test', require: "rack/test"

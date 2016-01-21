@@ -1,1 +1,3 @@
-D, [2016-01-20T13:04:41.823487 #47199] DEBUG -- :   [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+D, [2016-01-20T21:38:53.333642 #50537] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+D, [2016-01-20T21:38:53.374877 #50537] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Sara"], ["last_name", "Joe"], ["email", "saras@hotmail.com"], ["password_digest", "$2a$10$DdUQYIyegP3ZtXUYXqE2Rud1EN.RygkV7KzROMxCcQtzswHws9q12"], ["created_at", "2016-01-21 02:38:53.349497"], ["updated_at", "2016-01-21 02:38:53.349497"]]
+D, [2016-01-20T21:38:53.376352 #50537] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
