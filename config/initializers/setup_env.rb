@@ -5,7 +5,6 @@ variable_file_path = if ENV["APP_ENVIRONMENT"] == "development"
   elsif ENV["APP_ENVIRONMENT"] == "test"
     File.expand_path('../../../.test_env', __FILE__)
   else
-    # File.expand_path('../../../.prod_env', __FILE__)
     nil
   end
 

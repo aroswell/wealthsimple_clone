@@ -42,13 +42,7 @@ module Database
     end
 
     def connect
-      # the_connection = ActiveRecord::Base.establish_connection(@db_config)
-      # puts "Are there any connections to the database: #{@the_connection_pool.connected?}"
-
       @the_connection = @the_connection_pool.connection
-      # puts "Here's the connection object: #{@the_connection}"
-      # puts "How many connections are there now that we have a connection: #{@the_connection_pool.connections.length}"
-
       logger = Logger.new(File.open(@logfile_path, "w"))
       logger.level = Logger::DEBUG
       ActiveRecord::Base.logger = logger
@@ -58,7 +52,6 @@ module Database
 
     def release
       @the_connection_pool.checkin(@the_connection)
-      # puts "How many connections are there after release: #{@the_connection_pool.connections.length}"
     end
 
     def disconnect_all
