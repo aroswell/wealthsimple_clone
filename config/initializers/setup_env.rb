@@ -5,14 +5,18 @@ variable_file_path = if ENV["APP_ENVIRONMENT"] == "development"
   elsif ENV["APP_ENVIRONMENT"] == "test"
     File.expand_path('../../../.test_env', __FILE__)
   else
-    File.expand_path('../../../.prod_env', __FILE__)
+    # File.expand_path('../../../.prod_env', __FILE__)
+    nil
   end
+
 puts variable_file_path
 
-File.open(variable_file_path, 'r') do |f|
-  while line = f.gets
-    line.gsub!(/\n/,'')
-    key, value = line.split "="
-    ENV[key] = value
+if variable_file_path
+  File.open(variable_file_path, 'r') do |f|
+    while line = f.gets
+      line.gsub!(/\n/,'')
+      key, value = line.split "="
+      ENV[key] = value
+    end
   end
 end
