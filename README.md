@@ -1,4 +1,4 @@
-#WealthSimple-Clone#
+#[WealthSimple-Clone](https://wealthsimple-clone.herokuapp.com)#
 (written in Ruby, running with Sinatra and Thin)
 
 This app is a knock off of www.wealthsimple.com. It was originally built in Rails but I've decided to use Sinatra and venture beyond some of the Rails magic.
