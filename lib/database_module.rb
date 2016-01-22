@@ -1,5 +1,6 @@
 require File.expand_path( '../../config/boot', __FILE__)
 require 'yaml'
+require 'erb'
 require 'singleton'
 
 
