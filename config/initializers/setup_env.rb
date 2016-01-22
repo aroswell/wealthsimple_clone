@@ -1,8 +1,8 @@
 # Read environment variables and set them
 
-variable_file_path = if ENV["APP_ENVIRONMENT"] == "development"
+variable_file_path = if ENV["RACK_ENV"] == "development"
     File.expand_path('../../../.dev_env', __FILE__)
-  elsif ENV["APP_ENVIRONMENT"] == "test"
+  elsif ENV["RACK_ENV"] == "test"
     File.expand_path('../../../.test_env', __FILE__)
   else
     nil

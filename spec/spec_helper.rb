@@ -1,7 +1,7 @@
 # Script to delete data in test database and include whatever models and controllers required
 
 # Set environment to test mode
-ENV["APP_ENVIRONMENT"] = "test"
+ENV["RACK_ENV"] = "test"
 
 require File.expand_path( "../../lib/database_module", __FILE__ )
 require File.expand_path( "../../helpers/helpers.rb", __FILE__ )

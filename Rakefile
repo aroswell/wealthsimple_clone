@@ -3,7 +3,7 @@ namespace :db do
   desc "Loading database module"
   task :db_module, [:env] do |t, args|
     args.with_defaults( env: "development")
-    ENV["APP_ENVIRONMENT"] = "#{args[:env]}"
+    ENV["RACK_ENV"] = "#{args[:env]}"
     load 'lib/database_module.rb'
   end
 
@@ -71,7 +71,7 @@ namespace :app do
   desc "Run application"
   task :run, [:env] do |t, args|
     args.with_defaults( env: "development")
-    ENV["APP_ENVIRONMENT"] = "#{args[:env]}"
+    ENV["RACK_ENV"] = "#{args[:env]}"
     sh "rerun bin/server.rb"
   end
 
