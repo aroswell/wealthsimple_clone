@@ -1,0 +1,1 @@
+D, [2016-01-22T02:07:35.258953 #30223] DEBUG -- :   [1m[36mUser Load (56.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "yes@me.com"]]

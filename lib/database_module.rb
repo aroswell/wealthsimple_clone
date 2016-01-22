@@ -1,21 +1,34 @@
 require File.expand_path( '../../config/boot', __FILE__)
+require 'yaml'
 require 'singleton'
+
+
 
 module Database
 
   puts "Database module loaded"
 
-  def self.default_config
-    {
-      adapter: 'postgresql',
-      database: ENV["DB_NAME"],
-      username: ENV["DB_USERNAME"],
-      password: ENV["DB_PASSWORD"],
-      host: ENV["HOST"],
-      encoding: 'utf8',
-      pool: 5
-    }
+  # convert yml file to erb template to read in variables
+  # read in the new yml content and create a hash
+
+  def self.yaml_file_path
+    File.expand_path( '../../config/database.yml', __FILE__ )
   end
+
+  def self.render_template(yaml_string)
+    template = ERB.new(yaml_string)
+    template.result(binding)
+  end
+
+
+  def self.default_config
+    yml_file = File.open(yaml_file_path, "r")
+    config = YAML.load( render_template(yml_file.read) )
+    yml_file.close
+
+    return config
+  end
+
 
   class Setup
     def self.create
@@ -35,7 +48,7 @@ module Database
     include Singleton
     attr_reader :db_config, :logfile_path, :the_connection_pool
 
-    def initialize(config_hash = Database.default_config, logfile_path = File.expand_path('../../db/database.log', __FILE__))
+    def initialize( config_hash = Database.default_config, logfile_path = File.expand_path('../../db/database.log', __FILE__) )
       @db_config = config_hash
       @logfile_path = logfile_path
       @the_connection_pool = ActiveRecord::Base.establish_connection(@db_config)
