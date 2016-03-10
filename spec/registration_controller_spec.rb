@@ -11,7 +11,12 @@ describe UserController::RegistrationController do
     Sinatra::Application
   end
 
+  after(:all) {
+    User.delete_all
+  }
+
   describe 'GET signup' do
+    let(:user) { User.new }
     let(:routing_helper) { RoutingHelper }
 
     context "http responses depending on current user status" do
@@ -23,13 +28,13 @@ describe UserController::RegistrationController do
       end
 
       it "returns 302 if THERE IS A current_user" do
-        allow(routing_helper).to receive(:current_user) { true }
+        allow(routing_helper).to receive(:current_user) { user }
         get '/signup'
         expect(last_response.status).to eq(302)
       end
 
       it 'redirect to "/sign-in" if current_user == true' do
-        allow(routing_helper).to receive(:current_user) { true }
+        allow(routing_helper).to receive(:current_user) { user }
         get '/signup'
         expect(last_response.redirect?).to be(true)
         follow_redirect!

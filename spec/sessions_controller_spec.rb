@@ -11,6 +11,10 @@ describe 'UserController::SessionsController' do
   let(:session) { {} }
   let(:controller) { UserController::SessionsController.new }
 
+  after(:all) {
+    User.delete_all
+  }
+
   describe 'DELETE logout' do
     it 'redirects after logout' do
       allow(RoutingHelper).to receive(:delete_user_session) { puts "____Mock method called. User session gone!!____" }

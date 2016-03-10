@@ -1,3 +1,9 @@
-D, [2016-01-22T02:30:19.134948 #31797] DEBUG -- :   [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 7]]
-d", 7]]
-, "yes@me.com"]]
+D, [2016-03-09T20:20:02.439612 #8133] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-03-09T20:20:02.441078 #8133] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Brady"], ["last_name", "smith"], ["email", "smith_man@castle.com"], ["password_digest", "$2a$10$vgfc93MGHyMS9a3xqQJulujD1../xUum74xwU4W4/ZJNJCbAW7V2O"], ["created_at", "2016-03-10 01:20:02.439903"], ["updated_at", "2016-03-10 01:20:02.439903"]]
+D, [2016-03-09T20:20:02.442205 #8133] DEBUG -- :   [1m[35m (0.7ms)[0m  COMMIT
+D, [2016-03-09T20:20:02.444689 #8133] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+D, [2016-03-09T20:20:02.519198 #8133] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-03-09T20:20:02.520514 #8133] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Ricky"], ["last_name", "Castle"], ["email", "nikki_heat@castle.com"], ["password_digest", "$2a$10$FFnQlhK3r70i91Ak/k.GMe0yeLrvqQTKbhYuOrU0LrCenM/T0eQOu"], ["created_at", "2016-03-10 01:20:02.519426"], ["updated_at", "2016-03-10 01:20:02.519426"]]
+D, [2016-03-09T20:20:02.521830 #8133] DEBUG -- :   [1m[35m (0.9ms)[0m  COMMIT
+D, [2016-03-09T20:20:02.522914 #8133] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+D, [2016-03-09T20:20:02.524301 #8133] DEBUG -- :   [1m[35mSQL (0.8ms)[0m  DELETE FROM "users"
