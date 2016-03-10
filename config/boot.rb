@@ -6,6 +6,7 @@ pg = require "pg"
 logger = require "logger"
 faker = require 'faker'
 bcrypt = require 'bcrypt'
+cucumber = require 'cucumber'
 
 unless active_record
   puts "loading error for active_record lib"

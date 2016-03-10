@@ -31,3 +31,6 @@ gem 'bcrypt-ruby', '~> 3.1', '>= 3.1.5'
 
 # Rack Test
 gem 'rack-test', require: "rack/test"
+
+# BDD
+gem 'cucumber', '~> 2.3', '>= 2.3.2'
