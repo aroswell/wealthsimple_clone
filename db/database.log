@@ -1,10 +1,8 @@
-D, [2016-03-09T21:11:58.097769 #8623] DEBUG -- :   [1m[36m (6.8ms)[0m  [1mDROP TABLE "users" CASCADE[0m
-D, [2016-03-09T21:11:58.121305 #8623] DEBUG -- :   [1m[35m (23.2ms)[0m  CREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
-D, [2016-03-09T21:11:58.753893 #8623] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
-D, [2016-03-09T21:11:58.772178 #8623] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "users" ("first_name", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["first_name", "Test"], ["password_digest", "$2a$10$69aiTJBonfpxTF1VXRnmlOGKVgGFaRPRnS8FzuwwHp7zsZLSZZXGO"], ["created_at", "2016-03-10 02:11:58.758902"], ["updated_at", "2016-03-10 02:11:58.758902"]]
-D, [2016-03-09T21:11:58.773383 #8623] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
-D, [2016-03-09T21:11:58.778312 #8623] DEBUG -- :   [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
-astle.com"], ["password_digest", "$2a$10$q81l1/BwIY15id0AVmCqhuOJNNvqjd2n9cxsVPeB0XucJXzkmFbO."], ["created_at", "2016-03-10 02:11:59.326428"], ["updated_at", "2016-03-10 02:11:59.326428"]]
-D, [2016-03-09T21:11:59.328436 #8623] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
-D, [2016-03-09T21:11:59.329362 #8623] DEBUG -- :   [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "users"
-D, [2016-03-09T21:11:59.330728 #8623] DEBUG -- :   [1m[36mSQL (0.7ms)[0m  [1mDELETE FROM "users"[0m
+D, [2016-03-09T21:32:53.531708 #9011] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2016-03-09T21:32:53.533150 #9011] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Ernest"], ["last_name", "Smith"], ["email", "uncle-pins@live.com"], ["password_digest", "$2a$10$Kfxbfk19iZtGTwx3aNjXJeaFQolqs.3Bck4H6dGc6HSMC.DT8D2zq"], ["created_at", "2016-03-10 02:32:53.531982"], ["updated_at", "2016-03-10 02:32:53.531982"]]
+D, [2016-03-09T21:32:53.534638 #9011] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+D, [2016-03-09T21:32:53.536310 #9011] DEBUG -- :   [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "uncle-pins@live.com"]]
+N[0m
+D, [2016-03-09T21:32:53.786739 #9011] DEBUG -- :   [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Ricky"], ["last_name", "Castle"], ["email", "nikki_heat@castle.com"], ["password_digest", "$2a$10$iJHx8KyTdLArNxMa2HNSJ.c/KyYGye7NL33.Y6YzL9WuMRiJc66lG"], ["created_at", "2016-03-10 02:32:53.785721"], ["updated_at", "2016-03-10 02:32:53.785721"]]
+D, [2016-03-09T21:32:53.787987 #9011] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+D, [2016-03-09T21:32:53.789202 #9011] DEBUG -- :   [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "users"
